@@ -16,18 +16,19 @@
 
 ---
 
-## Why this fits the Special Issue
+## Research Contributions
 
-The CFP asks for industrial-engineering methods applied to sustainable, resilient, data-driven transportation systems, with explicit calls for AI trustworthiness and generative-AI decision support treated carefully rather than decoratively. This project was designed against that call point-by-point:
+This study integrates industrial engineering, network science, explainable artificial intelligence, and generative AI to develop a rigorous framework for evaluating rail-network decarbonization strategies. The framework combines four complementary analytical perspectives—diagnostic, explanatory, predictive, and prescriptive—while emphasizing robustness, interpretability, and reproducibility throughout the analytical pipeline.
 
-| CFP topic (VSI: CIE52) | Where this project delivers it |
-|---|---|
-| *"AI, machine learning, and big data analytics for optimizing freight ... flows"* | Graph-theoretic coverage-gap diagnosis (RQ1–RQ2) on the real KORAIL topology — degree, betweenness, cascade-impact centrality under simulated node removal |
-| *"Data-driven disruption management, predictive risk modeling, and strategies for resilient and adaptive supply chains"* | Dynamic spillover-burden reallocation under five real K-ETS carbon-policy scenarios (RQ3), tested against a Spearman association and a permutation-based convergence test |
-| *"AI security, robustness, and trustworthiness in transportation systems"* | An exact, closed-form SHAP audit layer (not a sampled approximation) plus a deterministic — not LLM-judging-LLM — narrative verifier, validated with an adversarial stress test that injects known-wrong claims and measures detection sensitivity/specificity |
-| *"Generative AI for logistics innovation and decision support"* | A narrowly-scoped Explainer/Auditor two-agent layer that is honest about what LLMs are asked to do (judge narrative language quality, cross-checked via Fleiss' κ across three architecturally distinct local models) versus what is checked deterministically in plain Python (numeric faithfulness) |
-| *"Industrial engineering methods ... optimization"* | A stochastic, budget-constrained submodular greedy selection problem with a formal (1 − 1/e) approximation guarantee (RQ5), stability-tested across 200 random scenario-probability draws |
-| *"Green transportation strategies and decarbonization of logistics networks"* | The entire framework is scenario-conditioned on Korea's K-ETS carbon-cost trajectory (S1 2023 baseline → S5 NDC-aligned intensification) |
+| Research contribution                                        | How this study delivers it                                                                                                                                                                                                                                                                                  |
+| ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Network-based diagnosis of rail decarbonization coverage** | Graph-theoretic analysis of the real KORAIL network identifies structurally underserved stations using degree, betweenness, and cascade-impact centrality under simulated node removals (RQ1–RQ2).                                                                                                          |
+| **Scenario-based resilience assessment**                     | Dynamic spillover-burden reallocation is evaluated across five K-ETS carbon-policy scenarios (RQ3), supported by Spearman correlation analysis and permutation-based convergence testing.                                                                                                                   |
+| **Explainable and trustworthy AI**                           | An exact closed-form SHAP audit layer is combined with a deterministic narrative verifier implemented in Python, and validated through adversarial stress tests that inject known incorrect claims to evaluate detection sensitivity and specificity.                                                       |
+| **Responsible use of generative AI**                         | A narrowly scoped Explainer–Auditor multi-agent framework distinguishes narrative generation from deterministic numerical verification. Narrative consistency is evaluated using Fleiss' κ across three architecturally distinct local language models, while numerical fidelity is verified independently. |
+| **Optimization under uncertainty**                           | A stochastic, budget-constrained submodular greedy optimization framework provides a formal (1 − 1/e) approximation guarantee (RQ5) and is evaluated across 200 randomly generated scenario-probability configurations.                                                                                     |
+| **Rail-network decarbonization planning**                    | The complete analytical framework is evaluated under five policy scenarios representing alternative K-ETS carbon-cost trajectories, from the 2023 baseline to progressively strengthened decarbonization pathways.                                                                                          |
+
 
 ---
 
