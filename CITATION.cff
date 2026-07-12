@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below. A journal citation will be added once the associated manuscript is accepted."
+title: "Concentrated Blind Spots: Diagnosing and Auditing Structural Coverage Gaps in Corridor-Based Rail Decarbonization Optimization"
+authors:
+  - family-names: "Lee"
+    given-names: "Yong-Jae"
+    affiliation: "Department of Industrial Data Engineering, Hanyang University"
+date-released: 2026-07-12
+version: "1.0.0"
+repository-code: "https://github.com/LEEYJ1021/rail-coverage-gap"
+license: MIT
+keywords:
+  - freight rail
+  - decarbonization
+  - coverage gap
+  - explainable AI
+  - SHAP
+  - submodular optimization
+  - Korea
+  - K-ETS
+preferred-citation:
+  type: unpublished
+  title: "Concentrated Blind Spots: Diagnosing and Auditing Structural Coverage Gaps in Corridor-Based Rail Decarbonization Optimization"
+  authors:
+    - family-names: "Lee"
+      given-names: "Yong-Jae"
+  notes: "Manuscript in preparation for Transportation Research Part E, Special Issue VSI: CIE52 (submission deadline 31 December 2026)."
