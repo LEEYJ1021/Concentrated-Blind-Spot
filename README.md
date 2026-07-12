@@ -89,8 +89,7 @@ rail-coverage-gap/
 │   └── supplement/        # Fig. S1–S7 (robustness supplement)
 └── docs/
     ├── methods_overview.md
-    ├── limitations_and_methods_supplement.md
-    └── cfp_alignment_notes.md
+    └── limitations_and_methods_supplement.md
 ```
 
 > **Data and analysis code.** The two source repositories (station-level network topology and cascade/centrality metrics) and the analysis notebook are maintained separately and referenced with pinned commit SHAs and SHA-256 checksums in the data-provenance manifest (see [Data & reproducibility](#data--reproducibility)) so results are exactly reproducible even if the source repositories change.
