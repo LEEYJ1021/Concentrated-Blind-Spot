@@ -1,12 +1,14 @@
 # Methods Overview
 
-This document expands the summary in the main `README.md` into a fuller methods narrative, organized in the diagnostic → explanatory → predictive → prescriptive sequence used throughout the project. It is written to be lifted, with light editing, into a manuscript's Methods section.
+This document expands the summary in the main `README.md` into a fuller methods narrative, organized in the diagnostic → robustness → prescriptive → independence-audit → convergence sequence used throughout the project. It is written to be lifted, with light editing, into a manuscript's or internal report's Methods section.
 
 ## 0. Scope definition
 
 The Korean freight rail network is partitioned into an **in-scope** set — four corridors (Gyeongbu, Chungbuk, Yeongdong, Jungang) that carry the bulk of current decarbonization-optimization attention — and an **out-of-scope** set of remaining stations. Each station's scope weight `w_i` is the fraction of its (non-branch) line assignments that fall inside the four in-scope corridors; multi-line junction stations are flagged separately so they are not silently double-counted as "fully out of scope."
 
 Station-to-line resolution for stations not covered by the original curated dataset uses a manually verified mapping cross-checked against MOLIT (Ministry of Land, Infrastructure and Transport) records. This mapping is exposed in full in the analysis code so it can be audited line-by-line.
+
+The network comprises 53 freight-handling stations in total; 19 fall inside the four designated corridors (either directly or as partially-assigned junctions) and 34 are formally out of scope. Framing this as a single, bounded network case follows standard analytic-generalization practice for few-case empirical work: conclusions should be read as claims about the mechanism linking policy-defined scope boundaries to network-structural risk, not as statistical claims about a population of national rail networks. Section 4 below (the synthetic-network robustness check) is the project's direct response to that limitation — it does not eliminate the single-network caveat, but it does test whether the central concentration finding is a property of the network's degree distribution or an accident of the one specific edge list observed.
 
 ## 1. RQ1 — Optimization Coverage Gap (OCG)
 
@@ -18,15 +20,29 @@ OCG = Σ_i [ weight_i * (1 − w_i) ] / Σ_i weight_i
 
 A nonparametric bootstrap (5,000 resamples) produces a 95% CI around each point estimate. Because four weightings are tested against the same implicit null (OCG = 50%), a Holm–Bonferroni correction (m = 4) is applied to the two-sided bootstrap p-values, and both corrected and uncorrected conclusions are reported side by side.
 
+Point estimates trend large across all four weightings (roughly 60–68%), but at N = 53 (or N = 33 for the betweenness-restricted cascade weighting) the corrected confidence intervals do not exclude the 50% reference value. RQ1 is deliberately treated as a **motivating trend rather than a standalone finding**; it establishes why a sharper, concentration-based test (RQ2) is needed rather than resting the analysis on the aggregate gap alone.
+
 ## 2. RQ2 — Concentration of the gap
 
 Restricting to out-of-scope stations only, the RQ1 gap contribution per station is ranked and a Gini coefficient and Lorenz curve are computed per weighting. To give the Gini coefficients a real comparator (an isolated "Gini = 0.667" number is not self-interpreting), each is benchmarked against a permutation null: the same total gap mass is reallocated uniformly at random (Dirichlet(1,...,1)) across the same N out-of-scope stations, 5,000 times, and an empirical p-value is computed as the fraction of null draws with Gini ≥ observed.
 
-## 3. RQ3 — Spillover-burden reallocation
+Degree-based concentration (Gini ≈ 0.43) is statistically indistinguishable from a uniform-random allocation of the same total mass. Betweenness-based concentration (Gini ≈ 0.79) and cascade-impact-based concentration (Gini ≈ 0.67), by contrast, both clear the permutation null at p < 0.001. This weighting-dependence is itself an operationally important finding: whichever centrality measure is used to justify a scope-expansion decision materially changes the conclusion, and this is stated explicitly rather than glossed over by reporting only the weighting that produces the most favorable result. RQ2 — not RQ1 — is treated as this project's central evidentiary claim, and it is the one carried forward into the robustness check below.
+
+## 3. Robustness check — synthetic degree-preserving network ensemble
+
+A single national network is, definitionally, a sample of one topology. A concentration statistic computed on it alone is vulnerable to the objection that the specific empirical wiring, rather than the network's more general structural properties, produced the result. This section addresses that objection directly rather than leaving it as an acknowledged-but-unaddressed limitation.
+
+**Procedure.** An ensemble of eight synthetic network realizations is generated by degree-preserving double-edge-swap rewiring of the empirical topology, each independently seeded (42, 137, 256, 512, 1024, 2048, 4096, 8192). Each realization keeps the same 53 nodes and the same total edge count — and therefore the exact same empirical degree sequence — while randomizing which specific pairs of stations are connected. Betweenness-weighted cascade impact is recomputed on each realization, and its Gini coefficient is benchmarked against a realization-specific permutation null (2,000 draws), using the identical procedure applied to the empirical network in RQ2.
+
+**Logic of the test.** If the RQ2 concentration finding reflects the specific empirical wiring, it should not survive randomization of the edge structure. If it instead reflects the more general skew of the degree distribution — a small number of stations holding disproportionately many connections — it should recur across realizations that preserve only that degree sequence.
+
+**Result.** Across the eight-realization ensemble, the observed Gini coefficient ranges from 0.614 to 0.700 (mean = 0.673, SD = 0.032), and every single realization exceeds its own permutation null at p < 0.001. Station-level identity is also substantially, though not perfectly, preserved: two stations recur in the top-5 of every one of the eight realizations, two more recur in five of eight, and one in four of eight, for a mean top-5 overlap with the empirical topology of 3.75 out of 5. The intended reading of a degree-preserving check of this kind is not exact station-identity reproduction — that would require preserving the full edge list, which would defeat the purpose of the test — but recurrence of structurally comparable stations as high-impact nodes regardless of the specific realized wiring. On that reading, the concentration finding is judged structural (a consequence of the degree distribution) rather than an artifact of one particular edge list.
+
+## 4. RQ3 — Spillover-burden reallocation
 
 Using real corridor-level Value of the Stochastic Solution (VSS) figures under five K-ETS carbon-policy scenarios (S1 2023 baseline through S5 NDC-aligned intensification) and observed origin–destination trip volumes, each out-of-scope station's spillover exposure is estimated as a trip-weighted average of the VSS of adjacent in-scope corridors. Spillover shares are normalized within each scenario, and the S1→S5 share change is regressed (Spearman) against the S1 baseline share to test whether burden **reconcentrates** on already-high-share stations or diffuses toward previously low-share stations.
 
-## 4. RQ4 — Predictive transfer with an exact SHAP audit layer
+## 5. RQ4 — Predictive transfer with an exact SHAP audit layer
 
 **Feature propagation.** Seven station-level centrality/demand features are z-scored and propagated two hops through a symmetrically-normalized adjacency matrix (Simplified Graph Convolution, SGC) built from observed corridor edges.
 
@@ -36,17 +52,45 @@ Using real corridor-level Value of the Stochastic Solution (VSS) figures under f
 
 **Label augmentation.** The original label set (N = 19, one VSS label per in-scope station under the S1 baseline only) is expanded to N = 95 by reusing each station's VSS labels under all five real, previously-collected K-ETS scenarios, with a scenario-intensity feature appended. This is explicitly a **repeated-measures design** — 19 independent stations × 5 scenario-repeats — and every reported metric states the effective independent N alongside the raw observation count. Cross-validation remains clustered at the corridor level throughout.
 
-## 5. RQ5 — Prescriptive optimization (budget-constrained scope expansion)
+## 6. RQ5 — Prescriptive optimization (budget-constrained scope expansion)
 
 **De-circularization.** An earlier version of this analysis defined the RQ5 "value" of adding an out-of-scope station to the optimization scope as a direct function of RQ2's cascade-impact metric and RQ3's spillover metric — which mechanically guarantees agreement with RQ2/RQ3 and makes any "convergence" claim circular. The value function used here instead is an equal-weighted composite of four features that enter **neither** RQ2 nor RQ3's target variables: closeness centrality, eigenvector centrality, demand centrality, and utilization centrality.
+
+**Important caveat carried into Section 7 below.** Choosing features that are not literally the RQ2 metric is a necessary first step, but it is not sufficient on its own to establish that the two value functions are evidentially independent — two variables computed on the same underlying topology can still be highly correlated even when they are not the same named quantity. Section 7 replaces this qualitative "different features" claim with a measured one.
 
 **Selection.** A greedy algorithm selects K = 5 stations to maximize the diminishing-returns-adjusted (submodular) sum of value, with an overlap penalty for adjacency to already-selected stations, carrying the standard (1 − 1/e) approximation guarantee for monotone submodular maximization under a cardinality constraint.
 
 **Convergence testing.** Overlap between this independently-defined RQ5 top-5 and each of RQ2/RQ3/RQ4's top-5 lists is tested against a permutation null of two random 5-station draws from the 34-station out-of-scope pool (20,000 draws), reporting an exact p-value per pairwise comparison rather than an eyeballed "same stations" claim.
 
-**Sensitivity.** Because the scenario probabilities used in the (original, spillover-based) RQ5 objective are themselves a modeling assumption, a 200-draw sweep over the probability simplex reports how often the same top-5 station set is recovered.
+**Sensitivity.** Because the scenario probabilities used in the (original, spillover-based) RQ5 objective are themselves a modeling assumption, a 200-draw sweep over the probability simplex reports how often the same top-5 station set is recovered. The same style of sweep, applied instead to the relative weighting of RQ5's four independent-composite value-function components, shows the current top-5 set (Obong, Goedong, Busan New Port, Ssangryong, Gwangyang) is recovered in 100% of 200 draws — the selection is not an artifact of a specific weighting choice among the four component features.
 
-## 6. LLM audit layer (Explainer / deterministic Verifier / Auditor panel)
+## 7. Quantifying feature independence between RQ2 and RQ5
+
+Because almost all network-structural features are computed from the same underlying adjacency matrix, no two centrality-derived variables in a study like this are ever fully statistically independent of one another. The operational question is whether they are independent *enough* that an observed relationship between them is informative rather than mechanical. This section replaces the qualitative "these are different features" claim in Section 6 with a directly measured one.
+
+**Procedure.** Pearson and Spearman correlations are computed, across all 53 stations, between betweenness centrality (the RQ2 metric) and each of the four RQ5 input features (closeness, eigenvector, demand, utilization centrality). The squared Pearson correlation (r²) is reported as the share of variance in each RQ5 input that is linearly explained by betweenness alone.
+
+**Result.**
+
+| RQ5 input feature | Pearson r with betweenness | Spearman ρ | r² (shared variance) | Reading |
+|---|---|---|---|---|
+| Closeness centrality | 0.520 | 0.447 | 27.0% | Moderately distinct |
+| Eigenvector centrality | 0.615 | 0.495 | 37.8% | Moderately distinct |
+| Demand centrality | 0.875 | 0.772 | 76.6% | Strongly collinear |
+| Utilization centrality | 0.919 | 0.879 | 84.5% | Strongly collinear |
+
+All four correlations are significant at p < 0.001 given N = 53, which is expected and not itself informative; the r² magnitude is what matters here. Closeness and eigenvector centrality — reach- and influence-based measures — share well under half their variance with betweenness, and support treating agreement with the RQ2 ranking as genuinely separate evidence. Demand and utilization centrality are strongly collinear with betweenness (r² = 0.77–0.85): on this network, a station that scores highly on betweenness will, with high probability, also score highly on these two features, largely because all three are driven by the same small set of high-throughput junctions. **Practical implication:** the RQ5 composite value function is only genuinely reinforced, in an evidential sense, by two of its four inputs.
+
+## 8. Reading the RQ2–RQ5 convergence result in light of Section 7
+
+RQ5's top-5 selection shares four of its five stations with RQ2's top-5 concentration ranking, an overlap far larger than the 20,000-draw permutation null predicts (p = 0.001). Read alongside Section 7, this overlap should be reported as a two-tier result rather than a single number:
+
+- Roughly half of RQ5's composite value function (demand, utilization) is strongly collinear with the RQ2 metric, so a meaningful share of the observed overlap is close to what a mechanical relationship between the two stages would produce on its own.
+- The other half (closeness, eigenvector) is only moderately correlated with betweenness, and this portion of the agreement is closer to genuine convergent validity — an independently constructed procedure reaching a similar conclusion via a different route.
+
+The honest summary carried through the rest of this project's reporting is: the observed 4/5 overlap is real and statistically far from chance, but a substantial share of its magnitude is attributable to shared topological origin rather than to two evidentially independent procedures reaching the same conclusion. A natural extension, noted for future work rather than folded into the current pipeline, is to re-estimate the RQ5 value function using only closeness and eigenvector centrality and test whether a comparably strong overlap with RQ2 survives once the collinear inputs are removed.
+
+## 9. LLM audit layer (Explainer / deterministic Verifier / Auditor panel)
 
 The design principle is: **do not ask an LLM to check another LLM's arithmetic.**
 
@@ -55,3 +99,15 @@ The design principle is: **do not ask an LLM to check another LLM's arithmetic.*
 3. **Auditor panel** (three architecturally distinct local models: llama3.1:8b, mistral:7b-instruct, qwen2.5:7b-instruct) independently judges only the narrative's *language quality* — overclaiming and readability — never re-deriving the numbers. Inter-rater reliability is reported via Fleiss' κ rather than raw percent agreement.
 4. **Positive control.** Because the deterministic verifier passes 100% of real narratives, a synthetic stress test injects known-wrong claims (flipped direction, shifted rank) at controlled corruption rates (0–100%) and measures the verifier's detection sensitivity and specificity, confirming the perfect real-data score reflects genuine correctness rather than a permissive verifier.
 5. **Prompt-injection defense.** Both agent system prompts explicitly instruct the model to treat all input values as inert data, and station names are sanitized (control characters and instruction-like substrings stripped) before templating — stated honestly as defense-in-depth, not a formal injection-proofing guarantee.
+
+## 10. Summary of statistical safeguards applied across sections
+
+| Threat to validity | Safeguard | Where applied |
+|---|---|---|
+| Small out-of-scope sample size (N = 34) inflating false-positive concentration claims | Permutation null constructed directly from the observed data | Section 2 (RQ2) |
+| Multiple simultaneous centrality weightings inflating family-wise error rate | Holm–Bonferroni correction (m = 4) | Section 1 (RQ1) |
+| Sampling uncertainty around bootstrap point estimates | 5,000-replicate station-level bootstrap | Section 1 (RQ1) |
+| Concentration finding specific to one empirical topology | 8-realization degree-preserving synthetic rewiring ensemble | Section 3 |
+| Circularity between diagnostic and prescriptive value functions | RQ5 built from features not used as the RQ2 metric | Section 6 (RQ5) |
+| Assumed rather than measured independence between RQ2 and RQ5 features | Pearson/Spearman correlation and r² shared-variance audit, all 4 RQ5 inputs | Section 7 |
+| Chance agreement between two independently constructed priority rankings | 20,000-draw permutation null on top-5 set overlap | Section 8 |
