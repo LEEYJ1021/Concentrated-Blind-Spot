@@ -114,11 +114,35 @@ def run_robustness_check(master, corridor_ef):
         return {"label": label, "N": len(vals), "Gini": round(obs_gini, 3),
                 "null_mean_Gini": round(null_dist.mean(), 3), "p_value": p_val, "top5": top5}
 
-    # Empirical topology (reference)
-    emp_result = gini_on_graph(G_empirical, out_scope_set, "Empirical topology", n_perm=5000)
-    empirical_top5 = emp_result["top5"]
-    print(f"\n  Empirical topology: N={emp_result['N']}, Gini={emp_result['Gini']}, "
-          f"null mean={emp_result['null_mean_Gini']}, p={emp_result['p_value']:.4f}")
+    # --- Empirical topology (reference) ---
+    # IMPORTANT: use the SAME precomputed cascade_impact_betweenness column that
+    # Stage A/B use (sourced from cascade_betweenness_exact.csv), NOT a live
+    # recomputation on a graph rebuilt from corridor_ef edges. A prior version of
+    # this script recomputed cascade impact from scratch on the reconstructed
+    # graph and obtained N=20, Gini=0.611 -- inconsistent with Stage A/B's own
+    # data, because the corridor_ef-reconstructed graph does not exactly
+    # reproduce the topology used to generate the canonical cascade dataset.
+    # Recomputation from scratch is unavoidable for the *synthetic* realizations
+    # (no precomputed data exists for a rewired graph), but the empirical
+    # baseline should use the authoritative precomputed values so the
+    # "before rewiring" reference point is the same one Stage B reports.
+    precomputed = master.set_index("station_eng")["cascade_impact_betweenness"]
+    emp_vals = precomputed.reindex(list(out_scope_set)).dropna()
+    emp_vals = emp_vals[emp_vals > 0]
+    obs_gini, null_dist, p_val = gini_permutation_test(emp_vals.to_numpy(), n_perm=5000)
+    empirical_top5 = set(emp_vals.sort_values(ascending=False).head(5).index)
+    emp_result = {"N": len(emp_vals), "Gini": round(obs_gini, 3),
+                  "null_mean_Gini": round(null_dist.mean(), 3), "p_value": p_val}
+    print(f"\n  Empirical topology (precomputed cascade_impact_betweenness, "
+          f"matches Stage A/B's own data source): N={emp_result['N']}, "
+          f"Gini={emp_result['Gini']}, null mean={emp_result['null_mean_Gini']}, "
+          f"p={emp_result['p_value']:.4f}")
+    print(f"  NOTE: a live recomputation on the corridor_ef-reconstructed graph "
+          f"gives a DIFFERENT result (N=20, Gini~0.61) -- the reconstructed "
+          f"graph is not a perfect stand-in for the true topology. Synthetic-"
+          f"ensemble numbers below should be read as a check on the mechanism "
+          f"(does concentration survive rewiring), not as numerically identical "
+          f"to this canonical empirical value.")
 
     rows = [{"realization": "Empirical topology", "seed": "-", "N": emp_result["N"],
              "Gini": emp_result["Gini"], "null_mean_Gini": emp_result["null_mean_Gini"],
@@ -129,10 +153,10 @@ def run_robustness_check(master, corridor_ef):
         rng = np.random.RandomState(seed)
         G_synth = G_empirical.copy()
         try:
-            nx.double_edge_swap(G_synth, nvis=n_swaps * 5, nswap=n_swaps, seed=rng)
+            nx.double_edge_swap(G_synth, nswap=n_swaps, max_tries=n_swaps * 20, seed=rng)
         except nx.NetworkXError:
             # Fall back to as many swaps as the graph will tolerate
-            nx.double_edge_swap(G_synth, nvis=n_swaps * 20, nswap=max(1, n_swaps // 2), seed=rng)
+            nx.double_edge_swap(G_synth, nswap=max(1, n_swaps // 2), max_tries=n_swaps * 50, seed=rng)
 
         result = gini_on_graph(G_synth, out_scope_set, f"Synthetic (seed {seed})", n_perm=N_PERM_PER_REALIZATION)
         if result is None:
