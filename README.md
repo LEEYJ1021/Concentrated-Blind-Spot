@@ -1,6 +1,5 @@
 # Concentrated Blind Spots: Structural Coverage Gaps in Corridor-Based Rail Decarbonization Networks
 
-**Project report — diagnostic-to-prescriptive analysis of the Korean national freight rail network**
 ---
 
 ## Table of contents
