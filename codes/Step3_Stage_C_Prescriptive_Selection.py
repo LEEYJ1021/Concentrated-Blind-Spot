@@ -132,8 +132,9 @@ def run_stage_c(master, data):
     print(f"  weights from a Dirichlet(1,1,1,1) simplex over "
           f"{INDEP_COLS} ...")
     top5_sets = []
+    rng = np.random.default_rng(42)  # local, order-independent RNG (fixes run-to-run drift)
     for _ in range(N_WEIGHT_DRAWS):
-        w = np.random.dirichlet(np.ones(len(INDEP_COLS)))
+        w = rng.dirichlet(np.ones(len(INDEP_COLS)))
         vmap = build_value_function(out_of_scope_master, weights=w)
         sel, _ = greedy_select(vmap, adj)
         top5_sets.append(frozenset(sel))
