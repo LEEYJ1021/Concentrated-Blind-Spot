@@ -1,7 +1,5 @@
 # Concentrated Blind Spots: Structural Coverage Gaps in Corridor-Based Rail Decarbonization Networks
 
----
-
 ## Table of contents
 
 - [1. Overview](#1-overview)
