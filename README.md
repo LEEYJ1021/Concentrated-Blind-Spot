@@ -2,6 +2,18 @@
 
 **Project report — diagnostic-to-prescriptive analysis of the Korean national freight rail network**
 
+> **Note on this revision.** A prior draft of this README (and the submitted manuscript) reported Stage C
+> results — a five-station set of Obong, Goedong, Busan New Port, Ssangryong, Gwangyang capturing 79.4% of
+> expected value with 100% selection stability — that could not be reproduced by running the committed
+> analysis code (`codes/Step3_Stage_C_Prescriptive_Selection.py`) against the committed data. A full audit of
+> both source repositories' commit histories found no script, past or present, that ever produced those
+> numbers. Two genuine bugs were found and fixed in the process (a `networkx` API incompatibility crashing
+> `Step4`, and a global-RNG-state issue making `Step3`'s stability sweep non-deterministic across call
+> orders); after fixing both, the pipeline runs end-to-end and produces the numbers below. This README
+> reports what the code actually outputs, not what the manuscript claims. See
+> [Section 11, "Discrepancy from the submitted manuscript"](#11-discrepancy-from-the-submitted-manuscript)
+> for the full audit trail.
+
 ---
 
 ## Table of contents
@@ -10,55 +22,47 @@
 - [2. Institutional setting](#2-institutional-setting)
 - [3. Data](#3-data)
 - [4. Analytical pipeline](#4-analytical-pipeline)
-  - [4.1 Stage A — Optimization Coverage Gap](#41-stage-a--optimization-coverage-gap-motivating-diagnostic)
-  - [4.2 Stage B — Concentration of the coverage gap](#42-stage-b--concentration-of-the-coverage-gap-decisive-diagnostic)
-  - [4.3 Robustness check — synthetic degree-preserving network ensemble](#43-robustness-check--synthetic-degree-preserving-network-ensemble)
-  - [4.4 Stage C — Prescriptive stochastic submodular selection](#44-stage-c--prescriptive-stochastic-submodular-selection)
-  - [4.5 Feature-independence audit](#45-feature-independence-audit)
-  - [4.6 Cross-stage convergence test](#46-cross-stage-convergence-test)
 - [5. Results summary](#5-results-summary)
 - [6. Statistical safeguards](#6-statistical-safeguards)
 - [7. Figures](#7-figures)
 - [8. Repository structure](#8-repository-structure)
 - [9. Running the pipeline](#9-running-the-pipeline)
 - [10. Data & reproducibility](#10-data--reproducibility)
-- [11. Limitations](#11-limitations)
-- [12. Future research](#12-future-research)
+- [11. Discrepancy from the submitted manuscript](#11-discrepancy-from-the-submitted-manuscript)
+- [12. Limitations](#12-limitations)
 
 ---
 
 ## 1. Overview
 
-Corridor-based freight-rail decarbonization programs typically concentrate optimization and monitoring effort on a designated subset of high-throughput corridors, leaving the majority of stations formally out of scope. This project asks three linked questions about the real topology and demand data of the Korean national freight rail network:
+Corridor-based freight-rail decarbonization programs typically concentrate optimization and monitoring effort
+on a designated subset of high-throughput corridors, leaving the majority of stations formally out of scope.
+This project asks three linked questions about the real topology and demand data of the Korean national
+freight rail network:
 
 1. Is the structural risk residing outside the designated scope **diffuse or concentrated**?
-2. Does an independently constructed, budget-constrained **prescriptive selection procedure recover the same handful of stations** that the diagnostic analysis identifies, and how independent are the two procedures' input features **in practice rather than by assumption**?
-3. Does the concentration finding **survive when tested against network realizations other than the single empirical topology**?
+2. Does an independently constructed, budget-constrained **prescriptive selection procedure recover the same
+   handful of stations** that the diagnostic analysis identifies, and how independent are the two procedures'
+   input features **in practice rather than by assumption**?
+3. Does the concentration finding **survive when tested against network realizations other than the single
+   empirical topology**?
 
-The pipeline is organized as a coupled diagnostic-to-prescriptive sequence rather than a set of loosely related analyses: a motivating diagnostic (Stage A), a decisive diagnostic (Stage B), a robustness check on Stage B against synthetic network realizations, a prescriptive stage (Stage C), a quantitative feature-independence audit between Stage B and Stage C, and a cross-stage convergence test. Every stage is benchmarked against an explicit statistical null rather than reported as a bare point estimate, and every safeguard is reported at the level of evidence it actually supports — including where that evidence is partial rather than complete (see [Section 6](#6-statistical-safeguards) and [Section 11](#11-limitations)).
+Every stage is benchmarked against an explicit statistical null rather than reported as a bare point
+estimate, and every safeguard is reported at the level of evidence it actually supports.
 
 ---
 
 ## 2. Institutional setting
 
-The empirical setting is the national freight rail network of the Republic of Korea, comprising **53 freight-handling stations**. Four corridors — **Gyeongbu, Chungbuk, Yeongdong, and Jungang** — are treated as the designated decarbonization scope, covering **19 stations** either directly or as multi-line junctions partially assigned to a designated corridor. The remaining **34 stations are formally out of scope**.
-
-Each station *i* is assigned a scope weight w<sub>i</sub> ∈ [0, 1], equal to the share of its non-branch line assignments that fall within the designated corridors; w<sub>i</sub> = 0 for out-of-scope stations. Station-to-line assignments are cross-validated against the national rail operator's published line topology, with a manually verified mapping (`VERIFIED_MAPPING` in `Step1_Stage_A_Coverage_Gap.py`) resolving multi-line junctions and branch-line ambiguities.
+53 freight-handling stations; four designated corridors (Gyeongbu, Chungbuk, Yeongdong, Jungang) covering 19
+stations; 34 stations formally out of scope. Unchanged from the manuscript.
 
 ---
 
 ## 3. Data
 
-Three data components feed the pipeline:
-
-| Component | Description | Source file(s) |
-|---|---|---|
-| Station attribute table | Coordinates, line assignments, hub classification for all 53 stations | `freight_stations_parsed.csv` |
-| Centrality dataset | Degree, betweenness, closeness, eigenvector, demand, utilization, and composite centrality per station, computed on the full national freight topology | `centrality_data.csv` |
-| Cascade-impact datasets | Exact change in network-wide centrality mass following each station's removal, under degree-, betweenness-, closeness-, and eigenvector-based removal | `cascade_*_exact.csv` |
-| Corridor efficiency / edge list | Origin-destination trip volumes used to reconstruct the network's edge structure | `corridor_efficiency_summary.csv` |
-
-All datasets are drawn from two version-controlled public repositories (see [Section 10](#10-data--reproducibility)).
+Unchanged from the manuscript — see `codes/Step1_Stage_A_Coverage_Gap.py` for the exact source URLs
+(`rail-freight-decarbonization` and `korea-freight-rail-resilience-analysis`, `upload_2026-07/data/`).
 
 ---
 
@@ -66,123 +70,143 @@ All datasets are drawn from two version-controlled public repositories (see [Sec
 
 ### 4.1 Stage A — Optimization Coverage Gap (motivating diagnostic)
 
-*Script: [`Step1_Stage_A_Coverage_Gap.py`](codes/Step1_Stage_A_Coverage_Gap.py)*
-
-For a centrality or cascade-impact weighting m<sub>i</sub>, the Optimization Coverage Gap (OCG) is the share of total weighted centrality mass attributable to out-of-scope stations:
-
-```
-OCG = Σᵢ [ mᵢ × (1 − wᵢ) ] / Σᵢ mᵢ
-```
-
-computed for four weightings: raw degree, raw betweenness, cascade impact under degree-based removal, and cascade impact under betweenness-based removal. A 95% confidence interval is obtained by station-level bootstrap resampling (5,000 replicates). Because four related weightings are tested against an implicit null of OCG = 50%, a Holm–Bonferroni correction (m = 4) is applied.
-
-**Result:** point estimates trend large across all four weightings — 62.6% (degree), 59.6% (betweenness), 67.5% (cascade impact, degree removal), 66.6% (cascade impact, betweenness removal) — but at this sample size (N = 53, or N = 33 for the betweenness-restricted cascade weighting) the 95% bootstrap confidence intervals are wide and none excludes the 50% reference value after correction. This stage is deliberately treated as a **motivating trend, not a confirmed finding**, and is superseded by Stage B.
+**Reproduces the manuscript exactly.** Point estimates: 62.6% (degree), 59.6% (betweenness), 67.5% (cascade
+impact, degree removal), 66.6% (cascade impact, betweenness removal). No weighting excludes 50% after
+Holm–Bonferroni correction (m = 4). Motivating trend, not a confirmed finding.
 
 ### 4.2 Stage B — Concentration of the coverage gap (decisive diagnostic)
 
-*Script: [`Step2_Stage_B_Concentration.py`](codes/Step2_Stage_B_Concentration.py)*
-
-Among the 34 out-of-scope stations, the Gini coefficient of each weighting is computed to test whether the coverage gap is diffuse or concentrated:
-
-```
-G = ( N + 1 − 2·Σᵢ [(N − i + 1)·x₍ᵢ₎] / Σᵢ xᵢ ) / N,   x₍1₎ ≤ x₍2₎ ≤ … ≤ x₍ₙ₎
-```
-
-A permutation null is constructed by reallocating the same total weighted mass uniformly at random across the same N out-of-scope stations via a symmetric Dirichlet(1,…,1) draw, repeated 5,000 times per weighting. The empirical p-value is the share of null-distribution Gini coefficients at or above the observed value. **This stage — not Stage A — is the pipeline's central evidentiary claim.**
+**Reproduces the manuscript exactly.**
 
 | Weighting | Observed Gini | Null mean | p (concentration > null) | Top-3 share | Stations for 80% |
 |---|---|---|---|---|---|
-| Degree | 0.429 | 0.485 | 0.872 | 31.9% | 18 |
+| Degree | 0.429 | 0.485 | 0.880 | 31.9% | 18 |
 | Betweenness | 0.789 | 0.486 | < 0.001 | 56.1% | 7 |
 | Cascade impact (degree) | 0.667 | 0.486 | < 0.001 | 67.2% | 10 |
 
-*Table B1. Gini concentration of the coverage gap among out-of-scope stations (N = 34), benchmarked against a Dirichlet(1,…,1) permutation null (5,000 draws).*
-
-Degree-based concentration is **not** distinguishable from a uniform-random allocation of the same total mass. Betweenness- and cascade-impact-based concentration, by contrast, both exceed the permutation null sharply: 7 stations account for 80% of the out-of-scope betweenness mass, and 10 stations account for 80% of out-of-scope cascade impact. The choice of weighting materially changes the policy conclusion.
+*Degree p-value corrected from a previously hardcoded "0.872" string in the script's console summary to the
+actually-computed 0.880 — a cosmetic fix; it does not change any conclusion.*
 
 ### 4.3 Robustness check — synthetic degree-preserving network ensemble
 
-*Script: [`Step4_Synthetic_Rewiring_Robustness.py`](codes/Step4_Synthetic_Rewiring_Robustness.py)*
+*Script: `Step4_Synthetic_Rewiring_Robustness.py` — required a genuine bug fix.*
 
-A single national network is, definitionally, a sample of one topology, so the Stage B concentration finding is vulnerable to the objection that the specific empirical wiring — rather than the network's more general structural properties — is responsible for the observed result. To test this directly, an ensemble of **eight synthetic network realizations** was generated by **degree-preserving double-edge-swap rewiring** of the empirical topology (each seeded independently: 42, 137, 256, 512, 1024, 2048, 4096, 8192). Each realization preserves the exact empirical degree sequence — the same 53 nodes and the same total edge count — while randomizing which specific pairs of stations are connected. Betweenness-weighted cascade impact is recomputed on each realization, and its Gini coefficient benchmarked against a realization-specific permutation null (2,000 draws), exactly as in Stage B.
+**Bug found:** the script recomputed cascade impact from scratch on a graph rebuilt from
+`corridor_efficiency_summary.csv` edges, rather than using the precomputed `cascade_impact_betweenness`
+column that Stage A/B themselves use. The reconstructed graph does not exactly reproduce the topology behind
+the canonical cascade dataset (53 nodes / 86 edges reconstructed vs. an unknown edge set used to generate the
+upstream `cascade_betweenness_exact.csv`), so this recomputation gave a different, non-canonical empirical
+baseline (N = 20, Gini = 0.611) that does not match Stage B's own numbers.
 
-| Realization (seed) | N | Gini | Permutation-null mean | p |
-|---|---|---|---|---|
-| Empirical topology | 33 | 0.686 | 0.484 | 0.0002 |
-| Synthetic — seed 42 | 53 | 0.692 | 0.491 | < 0.0005 |
-| Synthetic — seed 137 | 53 | 0.646 | 0.490 | < 0.0005 |
-| Synthetic — seed 256 | 53 | 0.699 | 0.489 | < 0.0005 |
-| Synthetic — seed 512 | 53 | 0.653 | 0.491 | < 0.0005 |
-| Synthetic — seed 1024 | 53 | 0.614 | 0.491 | 0.0005 |
-| Synthetic — seed 2048 | 53 | 0.700 | 0.490 | < 0.0005 |
-| Synthetic — seed 4096 | 53 | 0.699 | 0.490 | < 0.0005 |
-| Synthetic — seed 8192 | 53 | 0.680 | 0.491 | < 0.0005 |
+**Fix applied:** the empirical baseline now uses the same precomputed `cascade_impact_betweenness` column as
+Stage B. Result: **N = 19, Gini = 0.687, p = 0.0004** — matching Stage A/B's own data almost exactly (the
+manuscript's stated "N = 33" for this figure appears to be a copy-paste of Stage A's *whole-network* N rather
+than the *out-of-scope-restricted* N actually used for this Gini computation; the Gini value itself, 0.687 vs.
+the manuscript's 0.686, is correct).
 
-*Table B2. Betweenness-weighted cascade-impact Gini concentration on the empirical topology and across an eight-realization ensemble of degree-preserving synthetic rewirings.*
+A second bug — `nx.double_edge_swap(..., nvis=...)` — crashed on every seed, because `nvis` was never a valid
+parameter of that function in any `networkx` release; the correct parameters are `nswap` and `max_tries`.
+Fixed. With both bugs fixed, the eight-realization ensemble now runs to completion:
 
-Across the ensemble, the Gini coefficient ranges from 0.614 to 0.700 (mean = 0.673, SD = 0.032), and **every realization's observed Gini exceeds its own realization-specific permutation null at p < 0.001**. Station-level identity is also substantially — though not perfectly — preserved: the empirical topology's top-5 stations by cascade impact are Jecheon Yard, Obong, Goedong, Busan New Port, and Donghae. Across the eight synthetic realizations, Busan New Port and Jecheon Yard appear in the top-5 in all eight realizations, Goedong and Donghae in five, and Obong in four; **the mean overlap between each synthetic realization's top-5 and the empirical topology's top-5 is 3.75 out of 5**. Concentration this sharp is therefore not an idiosyncrasy of the one empirical wiring pattern; it recurs across every randomization that preserves only the network's degree sequence, indicating the skew is a structural consequence of the degree distribution itself, not of any particular set of station-to-station connections.
+| Realization (seed) | N | Gini | Null mean | p | Top-5 overlap w/ empirical |
+|---|---|---|---|---|---|
+| Empirical topology | 19 | 0.687 | 0.473 | 0.0004 | — |
+| Seed 42 | 21 | 0.592 | 0.476 | 0.0280 | 0/5 |
+| Seed 137 | 20 | 0.515 | 0.475 | 0.2515 | 2/5 |
+| Seed 256 | 21 | 0.518 | 0.476 | 0.2405 | 2/5 |
+| Seed 512 | 23 | 0.523 | 0.479 | 0.2230 | 2/5 |
+| Seed 1024 | 21 | 0.590 | 0.476 | 0.0335 | 2/5 |
+| Seed 2048 | 22 | 0.542 | 0.477 | 0.1480 | 2/5 |
+| Seed 4096 | 22 | 0.704 | 0.477 | 0.0000 | 3/5 |
+| Seed 8192 | 18 | 0.548 | 0.473 | 0.1305 | 1/5 |
+
+**This does not reproduce the manuscript's H2 claim.** Only 2 of 8 realizations (seeds 42, 4096) reach
+conventional significance (p < 0.05); 5 of 8 do not (p = 0.13–0.25). Mean top-5 station-identity overlap with
+the empirical topology is **1.75/5**, not the manuscript's claimed 3.75/5. The concentration pattern is
+present in the empirical network and recurs in *some* rewirings, but **does not survive rewiring as robustly
+as the manuscript states** — the script's own console output previously asserted "every realization's
+observed Gini exceeds its own... null at p < 0.001," but that line was a hardcoded string, not derived from
+the computed p-values; it has been removed.
+
+*Caveat:* because the reconstructed graph used for rewiring is itself an approximation of the true topology
+(see the bug above), this weaker robustness result should be read as a lower bound on what a rewiring test
+against the true edge list would show, not a definitive refutation of H2 — but as currently measurable from
+this repository's data, H2 is **only partially supported**.
 
 ### 4.4 Stage C — Prescriptive stochastic submodular selection
 
-*Script: [`Step3_Stage_C_Prescriptive_Selection.py`](codes/Step3_Stage_C_Prescriptive_Selection.py)*
+*Script: `Step3_Stage_C_Prescriptive_Selection.py` — required a determinism fix, not a logic fix.*
 
-A budget-constrained scope-expansion problem is formulated as selecting K out-of-scope stations to maximize expected captured value, with pairwise value discounted for topological overlap with already-selected stations. Because this objective is monotone and submodular, greedy selection provides a guaranteed approximation ratio to the optimum:
+**Bug found:** the 200-draw sensitivity sweep drew from the shared global `np.random` state rather than a
+locally seeded generator, so the reported stability rate depended on whether the script was run standalone or
+imported by `Step6` (32.5% vs. 39.5% across two otherwise-identical runs). **Fixed** by switching to a locally
+seeded `np.random.default_rng(42)`, matching the pattern `Step6` already uses. The selection itself
+(closeness + eigenvector + demand + utilization centrality, equally weighted, z-scored, with a 0.3×
+adjacency-overlap discount) was **not modified** — that would require justifying a different weighting scheme
+after the fact, which this audit does not do.
 
-```
-f(S_greedy) ≥ (1 − 1/e) · f(S*),   e ≈ 2.71828
-```
+**Result, now deterministic:**
 
-Station value is defined from a composite of **closeness, eigenvector, demand, and utilization centrality** — these four features were selected specifically because they are not the Stage B metric itself. This is a **necessary but not sufficient** de-circularization step; [Section 4.5](#45-feature-independence-audit) quantifies exactly how independent these four features actually are, rather than treating their distinct names as evidence of independence.
-
-| Station | Greedy selection rank (K = 5) | Selection frequency (200 draws) |
+| Station | Greedy rank (K = 5) | Cumulative value captured |
 |---|---|---|
-| Obong | 1 | 100% |
-| Goedong | 2 | 100% |
-| Busan New Port | 3 | 100% |
-| Ssangryong | 4 | 100% |
-| Gwangyang | 5 | 100% |
+| Obong | 1 | 11.8% |
+| Busan New Port | 2 | 22.5% |
+| Goedong | 3 | 31.3% |
+| Susaek | 4 | 34.8% |
+| Shingwangyang-hang | 5 | **39.3%** |
 
-*Table C1. Stage C station-selection stability under a 200-draw sensitivity sweep over the relative weighting of the four value-function components.*
-
-Greedy submodular selection identifies **Obong, Goedong, Busan New Port, Ssangryong, and Gwangyang** as the top-five priority stations under a budget of K = 5, jointly capturing **79.4%** of total expected out-of-scope value and reproducing exactly the same top-five set in **100% of 200 sensitivity draws**, indicating the selection is not an artifact of a specific weighting assumption. Because greedy selection under a monotone submodular objective is guaranteed to capture at least (1 − 1/e) ≈ 63% of the optimal achievable value, the 79.4% figure sits close to the theoretical ceiling for a five-station budget.
+Selection stability across 200 draws from the Dirichlet(1,1,1,1) weight simplex: **79/200 = 39.5%** (not
+100%). This is a real finding, not an artifact: even *before* the adjacency-overlap penalty is applied, the
+raw equal-weighted composite value already ranks Ssangryong 6th and Gwangyang well outside the top 20 among
+the 34 out-of-scope candidates — so no penalty-logic fix could recover the manuscript's stated top-5 without
+also changing the value function's weighting, which this repository's code has never done.
 
 ### 4.5 Feature-independence audit
 
-*Script: [`Step5_Feature_Independence_Audit.py`](codes/Step5_Feature_Independence_Audit.py)*
+**Reproduces the manuscript exactly** — unaffected by the Stage C / Step4 issues above.
 
-Rather than asserting that the Stage C value function is independent of the Stage B metric because it is built from differently named centrality measures, this audit computes the **actual Pearson and Spearman correlations**, across all 53 stations, between betweenness centrality (the Stage B metric) and each of the four Stage C inputs. The squared Pearson correlation (r²) is reported as the share of variance in each Stage C input that is linearly explained by betweenness alone.
-
-| Stage C input feature | Pearson r with betweenness | Spearman ρ | r² (shared variance) | Interpretation |
+| Stage C input feature | Pearson r w/ betweenness | Spearman ρ | r² | Interpretation |
 |---|---|---|---|---|
-| Closeness centrality | 0.520*** | 0.447*** | 27.0% | Moderately distinct |
-| Eigenvector centrality | 0.615*** | 0.495*** | 37.8% | Moderately distinct |
-| Demand centrality | 0.875*** | 0.772*** | 76.6% | Strongly collinear |
-| Utilization centrality | 0.919*** | 0.879*** | 84.5% | Strongly collinear |
-
-*Table C2. Pearson and Spearman correlation between betweenness centrality (Stage B metric) and each Stage C input feature, N = 53 stations. \*\*\* p < 0.001.*
-
-The results are asymmetric across the four features in a way a qualitative independence claim would not have surfaced. Closeness and eigenvector centrality — reach- and influence-based measures — share well under half their variance with betweenness, supporting a genuine independent-evidence interpretation. Demand and utilization centrality, by contrast, are **strongly collinear** with betweenness (r² = 0.77–0.85): a station that scores highly on betweenness will, with very high probability, also score highly on these two features, largely because all three quantities are driven by the same small set of high-throughput junctions. **The practical implication: Stage C's composite value function is only genuinely reinforced by two of its four inputs.**
+| Closeness | 0.520*** | 0.447*** | 27.0% | Moderately distinct |
+| Eigenvector | 0.615*** | 0.495*** | 37.8% | Moderately distinct |
+| Demand | 0.875*** | 0.772*** | 76.6% | Strongly collinear |
+| Utilization | 0.919*** | 0.879*** | 84.5% | Strongly collinear |
 
 ### 4.6 Cross-stage convergence test
 
-*Script: [`Step6_Convergence_Test.py`](codes/Step6_Convergence_Test.py)*
+*Script: `Step6_Convergence_Test.py` — unmodified; result changes only because its Stage C input changed.*
 
-The top-5 out-of-scope stations from Stage B and Stage C are compared. The observed overlap (out of 5) is benchmarked against a permutation null in which two independent five-station sets are drawn without replacement from the 34-station candidate pool, 20,000 times; the empirical p-value is the share of null draws whose overlap is at least as large as observed.
+Stage B top-5 (betweenness): Busan New Port, Obong, Goedong, Shingwangyang-hang, Hwangdeung.
+Stage C top-5 (corrected): Obong, Busan New Port, Goedong, Susaek, Shingwangyang-hang.
 
-**Result:** the Stage C selection shares **four of its five stations** with the Stage B concentration ranking (Obong, Goedong, and Busan New Port recur across both; Ssangryong and Gwangyang are recovered by Stage C alone) — an overlap far larger than the permutation null predicts (**p = 0.001**).
+**Observed overlap: 4/5** (Obong, Busan New Port, Goedong, Shingwangyang-hang recur; Hwangdeung is Stage-B
+-only, Susaek is Stage-C-only). Permutation null (20,000 draws, 34-station pool): **p = 0.0003**.
 
-This result is read jointly with the feature-independence audit rather than in isolation. Roughly half of Stage C's composite value function (demand and utilization centrality) is strongly collinear with the Stage B metric, so a meaningful share of the observed overlap is close to what a mechanical relationship between the two stages would produce on its own. The other half (closeness and eigenvector centrality) is only moderately correlated with betweenness, and this portion of the agreement is closer to genuine convergent validity. **The honest summary is a two-tier one:** the observed overlap is real and statistically far from chance, but a substantial share of its magnitude is attributable to shared topological origin rather than to two evidentially independent procedures reaching the same conclusion.
+This is numerically *stronger* convergence than the manuscript's stated 3/5 (p = 0.015), but the qualitative
+interpretation the manuscript argues for is, if anything, reinforced rather than undercut: three of the four
+overlapping stations (Obong, Busan New Port, Goedong) are also the three stations with the largest raw
+betweenness *and* the largest demand/utilization centrality — the two Stage C inputs shown in §4.5 to be
+strongly collinear with the Stage B metric. Susaek, the one Stage-C-only pick, has the *lowest*
+demand/utilization values of the five (see feature table above), meaning its selection is driven almost
+entirely by the two genuinely-independent features (closeness, eigenvector) — a useful illustration of
+exactly the point Section 4.5 makes, even though the specific station differs from the manuscript.
 
 ---
 
 ## 5. Results summary
 
-1. The coverage gap is large in point estimate (59.6–67.5%) but statistically inconclusive on its own at N = 53; Stage A is a motivating trend, not a confirmed finding.
-2. Out-of-scope structural risk is **not diffuse — it is sharply concentrated** on betweenness- and cascade-impact-based weightings (Gini 0.667–0.789, p < 0.001); degree-based concentration is statistically indistinguishable from random allocation.
-3. The concentration finding **is not an artifact of the single empirical topology**: it survives an eight-realization synthetic rewiring ensemble at p < 0.001 in every realization, with 3.75/5 mean station-identity overlap.
-4. A budget-constrained stochastic submodular optimizer recovers a **stable, deployable five-station priority set** — Obong, Goedong, Busan New Port, Ssangryong, Gwangyang — capturing 79.4% of expected out-of-scope value with 100% selection stability.
-5. Feature independence between the two stages is **measured, not assumed**: two of four Stage C inputs are moderately distinct from the Stage B metric (r² = 0.27–0.38), two are strongly collinear (r² = 0.77–0.85).
-6. The diagnostic and prescriptive rankings converge at a level unlikely to arise by chance (4/5 overlap, p = 0.001) — but the convergence is **honestly reported as partial**, roughly half genuinely independent evidence and half shared topological origin.
+1. Coverage gap: large point estimate (59.6–67.5%), statistically inconclusive at N = 53. Unchanged.
+2. Concentration: sharply concentrated on betweenness/cascade-impact weightings (Gini 0.667–0.789,
+   p < 0.001); degree-based concentration indistinguishable from random. Unchanged.
+3. **Robustness under rewiring: only partially supported.** 2/8 synthetic realizations reach p < 0.05; mean
+   station-identity overlap with the empirical topology is 1.75/5, not 3.75/5.
+4. **Prescriptive selection: Obong, Busan New Port, Goedong, Susaek, Shingwangyang-hang**, capturing **39.3%**
+   of expected value with **39.5%** selection stability — not the previously reported 79.4%/100%.
+5. Feature independence: unchanged — 2 of 4 Stage C inputs moderately distinct (r² = 0.27–0.38), 2 strongly
+   collinear (r² = 0.77–0.85).
+6. Convergence: **4/5 overlap, p = 0.0003** — numerically stronger than previously reported, and the
+   feature-independence audit still shows the overlap is partly mechanical (driven by the collinear
+   demand/utilization inputs) and partly independent (Susaek's selection via closeness/eigenvector alone).
 
 ---
 
@@ -271,28 +295,41 @@ Each script is independently runnable and prints a labeled console report of its
 
 ---
 
-## 11. Limitations
+## 11. Discrepancy from the submitted manuscript
 
-We would rather these be documented here than discovered by a downstream reader:
+This section exists because the numbers above do not match the submitted manuscript, and that gap should be
+visible rather than silently resolved.
 
-- **Out-of-scope N = 34 is small.** This is the direct reason Stage A's confidence intervals are wide and the Stage B–C convergence test has limited statistical power to detect anything short of near-total overlap.
-- **This is a single-case network design.** Its claims should be read as generalizations about the mechanism linking policy-defined scope boundaries to network-structural risk, not as statistical generalizations to a population of national rail networks. The synthetic-rewiring robustness check narrows, but does not eliminate, this limitation: a rewiring ensemble is still drawn from the same network's own degree distribution and cannot substitute for genuinely independent replication on a different country's rail network.
-- **The Stage C "de-circularization" safeguard is necessary but not sufficient on its own.** Building the prescriptive value function from features that are not literally the Stage B metric is a necessary starting point, but the feature-independence audit shows that not all nominally distinct features are equally independent — two of the four Stage C inputs (demand, utilization) turn out to be strongly collinear with betweenness (r² = 0.77–0.85).
-- **The reported 4/5 convergence overlap should not be read as "two fully independent methods agree."** Roughly half of that agreement is attributable to shared topological origin rather than independent triangulation.
-- **Degree-based concentration is not statistically distinguishable from random allocation.** Whichever centrality weighting is used to justify scope-expansion decisions materially changes the conclusion, and this sensitivity should be stated explicitly in any operational use of this framework.
-
-Full text: [`docs/limitations_and_methods_supplement.md`](docs/limitations_and_methods_supplement.md).
+- **What was checked:** the full commit history of both `Concentrated-Blind-Spot` (17 commits) and
+  `korea-freight-rail-resilience-analysis` (11 commits) was reviewed. `Step3_Stage_C_Prescriptive_Selection.py`
+  was added in a single commit (`a90a8ed`) and has never been modified since. No script in either repository
+  — past or present, including the older `revision/` and `results/H1-H5_*` artifacts from a related but
+  distinct earlier project — implements a budget-constrained submodular selection over these features.
+- **What this means:** the 79.4% / 100%-stability / Ssangryong+Gwangyang result reported in the manuscript
+  cannot currently be traced to any committed code or data. It may exist in an uncommitted local notebook; if
+  so, pushing that version (or sharing the specific weighting it used) would resolve this immediately.
+- **What was not done:** the value function, adjacency definition, or overlap-penalty rate were not altered
+  to try to recover the manuscript's stated stations. Doing so without an independent justification for the
+  new weights would be fitting the method to the desired conclusion rather than reporting what the declared
+  method produces.
+- **Recommended next step for the manuscript:** either (a) locate and commit the original Stage C script/
+  notebook so the result can be independently verified, or (b) revise Section 4.5–4.7, 5.1–5.3, 6.1, 6.3, and
+  the Conclusion to report Obong/Busan New Port/Goedong/Susaek/Shingwangyang-hang, 39.3%, 39.5% stability, and
+  a 4/5 (p = 0.0003) convergence overlap, and revise the H2 discussion (§4.3, 5.5, 6.1) to state that the
+  robustness ensemble only partially supports H2 (2/8 realizations significant, mean overlap 1.75/5) rather
+  than uniformly supporting it.
 
 ---
 
-## 12. Future research
+## 12. Limitations
 
-This project deliberately restricts its scope to the diagnostic-prescriptive pairing that the data support at conventional significance. Several related analyses were developed on the same underlying dataset but are intentionally kept out of the central pipeline above, and are noted here as directions for follow-on work:
+All limitations from the prior draft still apply. Add:
 
-- **Re-estimating the Stage C value function using only the genuinely independent inputs.** A natural extension is to rebuild the prescriptive value function using closeness and eigenvector centrality alone — the two features shown here to be only moderately correlated with betweenness — and test whether the resulting priority set still recovers a comparable share of expected out-of-scope value and a comparable overlap with the Stage B ranking. If the overlap holds, the convergence claim would rest on an unambiguously independent value function; if it drops substantially, that is itself informative about how much of the current convergence is genuinely non-circular.
-- **Replication on a second national rail network.** The single-network limitation discussed above is addressed here through synthetic rewiring, not independent replication. Applying the same diagnostic-prescriptive pipeline to a structurally comparable freight network in another country would be the most direct way to strengthen external validity.
-- **A predictive transfer layer with exact Shapley attribution.** A companion analysis develops a graph-propagated transfer model that extrapolates in-scope resilience-value labels to out-of-scope stations, with exact closed-form SHAP attribution rather than sampled attribution, made possible by a deliberately linear model specification.
-- **Dynamic spillover-burden reallocation under alternative carbon-policy scenarios.** A related line of analysis examines how out-of-scope structural burden shifts as decarbonization policy intensifies across multiple carbon-pricing scenarios, using the same underlying network and centrality data.
-- **An audited large-language-model narration layer for non-technical stakeholders.** A separate exploratory component pairs an LLM-based narrative explainer with a deterministic, code-based verification layer, validated with an adversarial positive-control stress test, to translate the technical diagnostic and prescriptive outputs above into stakeholder-facing language without sacrificing numerical fidelity.
-
-These directions are reported separately because each answers a distinct methodological question from the one addressed in this project's central diagnostic-to-prescriptive pipeline.
+- **Two genuine software bugs were present in the committed pipeline** (a `networkx` API incompatibility that
+  crashed Step 4 outright, and a global-RNG-state issue that made Step 3's stability sweep non-deterministic).
+  Both are fixed in this revision. Anyone who ran this pipeline before this fix would have been unable to
+  complete Step 4 at all, and would have seen Step 3's stability rate drift between runs.
+- **The Step 4 empirical baseline and the graph used for synthetic rewiring are not perfectly consistent with
+  each other** (precomputed cascade data implies a different effective topology than the edge list
+  reconstructed from `corridor_efficiency_summary.csv`). This is now stated explicitly rather than silently
+  producing a mismatched N.
