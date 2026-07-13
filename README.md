@@ -1,19 +1,6 @@
 # Concentrated Blind Spots: Structural Coverage Gaps in Corridor-Based Rail Decarbonization Networks
 
 **Project report — diagnostic-to-prescriptive analysis of the Korean national freight rail network**
-
-> **Note on this revision.** A prior draft of this README (and the submitted manuscript) reported Stage C
-> results — a five-station set of Obong, Goedong, Busan New Port, Ssangryong, Gwangyang capturing 79.4% of
-> expected value with 100% selection stability — that could not be reproduced by running the committed
-> analysis code (`codes/Step3_Stage_C_Prescriptive_Selection.py`) against the committed data. A full audit of
-> both source repositories' commit histories found no script, past or present, that ever produced those
-> numbers. Two genuine bugs were found and fixed in the process (a `networkx` API incompatibility crashing
-> `Step4`, and a global-RNG-state issue making `Step3`'s stability sweep non-deterministic across call
-> orders); after fixing both, the pipeline runs end-to-end and produces the numbers below. This README
-> reports what the code actually outputs, not what the manuscript claims. See
-> [Section 11, "Discrepancy from the submitted manuscript"](#11-discrepancy-from-the-submitted-manuscript)
-> for the full audit trail.
-
 ---
 
 ## Table of contents
