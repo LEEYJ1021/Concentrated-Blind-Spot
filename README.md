@@ -234,12 +234,12 @@ clustered, so a region-scoped remedy (e.g., a fifth corridor) would not efficien
 |---|---|---|
 | ![Fig 1](figures/main/fig1_framework.png) | ![Fig 2](figures/main/fig2_data_pipeline.png) | ![Fig 3](figures/main/fig3_ocg_forest.png) |
 | **Fig. 1.** Overall pipeline — network, scope definition, out-of-scope candidate pool, Stage A→B/C→convergence→spatial-test flow. | **Fig. 2.** Data pipeline — raw sources, preprocessing, and the three analysis-ready datasets feeding Stages A–C. | **Fig. 3.** Optimization Coverage Gap forest plot — bootstrap and Holm–Bonferroni-adjusted CIs against the 50% and 64.2% reference lines. |
-| ![Fig 4](figures/main/fig4_lorenz.png) | ![Fig 5](figures/main/fig5_permutation_null.png) | ![Fig 6](figures/main/fig6_combined_map.png) |
+| ![Fig 4](figures/main/fig4_lorenz.png) | ![Fig 5](figures/main/fig5_permutation_null.png) | ![Fig 6](figures/main/Fig__6__Geographic_distribution_of_coverage_gaps_and_Stage_C_priority_stations_.png) |
 | **Fig. 4.** Lorenz curves of the out-of-scope structural gap by weighting, with Gini coefficients. | **Fig. 5.** Observed Gini coefficients against their permutation-null distributions (degree, betweenness, cascade impact). | **Fig. 6.** Combined map — concentration diagnosis (left, Stage B) and stochastic greedy Top-K=5 selection (right, Stage C: Obong, Busan New Port, Goedong, Susaek, Shingwangyang-hang) over real geography. |
-| ![Fig 7](figures/main/fig7_cumulative_value.png) | ![Fig 8](figures/main/fig8_convergence_null.png) | ![Fig 9](figures/main/fig9_convergence_grid.png) |
+| ![Fig 7](figures/main/Fig__7__Cumulative_value_captured_by_greedy_selection_.png) | ![Fig 8](figures/main/Fig__8__Permutation-null_distribution_of_chance_overlap.png) | ![Fig 9](figures/main/Fig__9__Station-level_convergence_grid__Stage_B_vs__Stage_C_.png) |
 | **Fig. 7.** Cumulative expected value captured by the greedy selection, K = 1…5, against the (1 − 1/e) worst-case guarantee; 39.3% captured at K = 5. | **Fig. 8.** Diagnostic–prescriptive top-5 overlap against a 20,000-draw permutation null (observed overlap = 4/5, P(X≥4) = 0.0003). | **Fig. 9.** Side-by-side rank comparison of the diagnostic (Stage B) and prescriptive (Stage C) top-5 station lists — Hwangdeung is Stage-B-only, Susaek is Stage-C-only. |
-| ![Fig 10](figures/main/fig10_moran_spatial.png) | | |
-| **Fig. 10.** Geographic dispersion of cascade-impact values (left) and global Moran's I across k = 3–8 nearest-neighbor weights (right); no k shows significant spatial clustering (all p > 0.4). | | |
+| ![Fig 10](figures/main/Fig__10__Spatial_autocorrelation_test_of_the_structural_coverage_gap_.png) | | |
+| **Fig. 10.** Geographic dispersion of cascade-impact values (left) and global Moran's I across k = 3, 4, 5, 6, 8 nearest-neighbor weights (right); no k shows significant spatial clustering (all p > 0.4). | | |
 
 ---
 
