@@ -1,0 +1,17 @@
+﻿figure,width_mm_after_crop,texts_below_6.5pt,overlapping_text_boxes,texts_beyond_canvas,over_190mm
+Fig01_design,190.0,0,0,0,False
+Fig02_maps,177.9,0,0,1,False
+Fig03_calibration,190.4,0,1,3,False
+Fig04_power_detectability,182.5,0,3,1,False
+Fig05_korean_application,185.7,0,0,0,False
+Fig06_design_space,183.5,0,0,2,False
+Fig07_typicality_spatial,186.0,0,2,0,False
+Fig08_core_candidates,182.7,0,0,0,False
+FigS1_cascade_decomposition,110.0,0,0,1,False
+FigS2_lorenz_topshare,184.4,0,0,3,False
+FigS3_size_screen_local,186.3,0,0,0,False
+FigS4_in_vs_out_gini,181.2,0,1,1,False
+FigS5_specification_curve,173.5,0,2,1,False
+FigS6_stageC_diagnostics,185.7,0,1,2,False
+FigS7_dependence_matrix,95.1,0,3,0,False
+FigS8_exogenous_temporal,178.5,0,1,0,False

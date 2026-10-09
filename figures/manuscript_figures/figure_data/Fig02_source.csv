@@ -1,0 +1,213 @@
+﻿scope,station,lon,lat,eff_loss_dist,w,outside,tier
+manuscript line-tag weights,Gaya,129.0427,35.15585,0.0,0.0,True,
+manuscript line-tag weights,Uiwang,126.94838,37.3211,0.0174322300369631,1.0,False,
+manuscript line-tag weights,Gacheon,128.69306,35.85361,0.0,1.0,False,
+manuscript line-tag weights,JecheonYard,128.1785,37.12769,0.2262839645423223,0.6666666666666666,False,B
+manuscript line-tag weights,Ganchi,126.62076,36.20982,0.0,0.0,True,
+manuscript line-tag weights,Gwangyang,127.58778,34.95611,0.0154311924910763,0.0,True,C
+manuscript line-tag weights,Sillyewon,126.84972,36.72714,0.0,0.0,True,
+manuscript line-tag weights,Cheonan,127.14683,36.81012,3.5723667004328163e-05,0.5,False,
+manuscript line-tag weights,Gwangwoondae,127.06191,37.62369,0.0,0.0,True,C
+manuscript line-tag weights,Dodam,128.3265,37.02436,0.0397392284521995,1.0,False,
+manuscript line-tag weights,Ipseokri,128.29764,37.19686,0.0,0.0,True,C
+manuscript line-tag weights,Goedong,129.375,35.99667,0.0618531671281059,0.0,True,A
+manuscript line-tag weights,Suncheon,127.50221,34.94637,0.0044084171972716,0.0,True,
+manuscript line-tag weights,Obong,126.96111,37.33611,0.0315791942375769,0.0,True,A
+manuscript line-tag weights,Jecheon,128.20617,37.12722,0.0,0.6666666666666666,False,
+manuscript line-tag weights,Gunsan,126.76087,35.9977,0.0022444086609674,0.0,True,
+manuscript line-tag weights,Taegum,127.71528,34.93056,0.001709695681803,0.0,True,
+manuscript line-tag weights,Naju,126.71699,35.01426,0.0,0.0,True,
+manuscript line-tag weights,Heungguksa,127.67611,34.81667,0.0206300921993454,0.0,True,C
+manuscript line-tag weights,DaejeonYard,127.4225,36.37111,0.0,1.0,False,
+manuscript line-tag weights,Donghae,129.12276,37.49798,0.1070287893072053,0.5,False,B
+manuscript line-tag weights,Deokso,127.20944,37.58639,0.0037673603724204,1.0,False,
+manuscript line-tag weights,Mureung,128.6875,36.51917,0.0,0.0,True,
+manuscript line-tag weights,Susaek,126.89395,37.58176,0.0,0.0,True,C
+manuscript line-tag weights,Doan,127.61444,36.81333,0.0,0.0,True,
+manuscript line-tag weights,Dongsan,127.08778,35.875,0.0656455749465956,1.0,False,
+manuscript line-tag weights,ShingwangyangPort,127.64722,34.89778,0.0199161954283541,0.0,True,C
+manuscript line-tag weights,BusanNewPort,128.84629,35.11429,0.1270617696973466,0.0,True,A
+manuscript line-tag weights,Busanjin,129.04991,35.12873,0.0242748071833258,1.0,False,
+manuscript line-tag weights,Seokpo,129.06029,37.04596,0.0,1.0,False,
+manuscript line-tag weights,Eumseong,127.72612,36.92603,0.0,1.0,False,
+manuscript line-tag weights,Masan,128.57728,35.2359,0.0,0.0,True,
+manuscript line-tag weights,Yeongju,128.62575,36.81094,0.0412304294470662,0.6666666666666666,False,C
+manuscript line-tag weights,Mokpo,126.4,34.8,0.0,0.0,True,
+manuscript line-tag weights,Hwangdeung,126.94335,35.99972,0.0301028597937123,0.0,True,B
+manuscript line-tag weights,Munsu,128.63,36.76889,0.0,0.0,True,
+manuscript line-tag weights,BugangCargo,127.349,36.54419,0.0,0.0,True,
+manuscript line-tag weights,Sapgyo,126.75167,36.67028,0.0,0.0,True,
+manuscript line-tag weights,Yakmok,128.36417,36.03722,0.0041119718320056,1.0,False,
+manuscript line-tag weights,Seokhang,128.48528,37.19722,0.0,0.0,True,
+manuscript line-tag weights,Shindong,128.32861,35.95556,0.0,0.0,True,
+manuscript line-tag weights,Ssangryong,127.34,37.17439,0.032482383265283,0.0,True,C
+manuscript line-tag weights,Cheongju,127.24399,36.64671,0.0133496621962395,1.0,False,
+manuscript line-tag weights,Paldang,127.24454,37.53328,0.0,1.0,False,
+manuscript line-tag weights,Okgye,129.05054,37.61675,0.0,1.0,False,
+manuscript line-tag weights,Taehwagang,129.35417,35.53917,0.0,0.0,True,
+manuscript line-tag weights,Onsan,129.35103,35.42133,9.511710426146625e-05,0.0,True,
+manuscript line-tag weights,Cheoram,129.03696,37.11289,0.0316213575788307,1.0,False,
+manuscript line-tag weights,Iksan,126.9458,35.94164,0.0,0.0,True,
+manuscript line-tag weights,Jeokryang,127.70611,34.85556,0.0255473119158734,0.0,True,
+manuscript line-tag weights,Incheon,126.62662,37.47603,0.0,0.0,True,
+manuscript line-tag weights,Heukseokri,127.33913,36.25524,0.0,0.0,True,
+manuscript line-tag weights,Gyeongju,129.13889,35.79833,0.0,0.0,True,
+branch->trunk tag weights,Gaya,129.0427,35.15585,0.0,1.0,False,
+branch->trunk tag weights,Uiwang,126.94838,37.3211,0.0174322300369631,1.0,False,
+branch->trunk tag weights,Gacheon,128.69306,35.85361,0.0,1.0,False,
+branch->trunk tag weights,JecheonYard,128.1785,37.12769,0.2262839645423223,0.6666666666666666,False,B
+branch->trunk tag weights,Ganchi,126.62076,36.20982,0.0,0.0,True,
+branch->trunk tag weights,Gwangyang,127.58778,34.95611,0.0154311924910763,0.0,True,C
+branch->trunk tag weights,Sillyewon,126.84972,36.72714,0.0,0.0,True,
+branch->trunk tag weights,Cheonan,127.14683,36.81012,3.5723667004328163e-05,0.5,False,
+branch->trunk tag weights,Gwangwoondae,127.06191,37.62369,0.0,0.0,True,C
+branch->trunk tag weights,Dodam,128.3265,37.02436,0.0397392284521995,1.0,False,
+branch->trunk tag weights,Ipseokri,128.29764,37.19686,0.0,0.0,True,C
+branch->trunk tag weights,Goedong,129.375,35.99667,0.0618531671281059,0.0,True,A
+branch->trunk tag weights,Suncheon,127.50221,34.94637,0.0044084171972716,0.0,True,
+branch->trunk tag weights,Obong,126.96111,37.33611,0.0315791942375769,0.0,True,A
+branch->trunk tag weights,Jecheon,128.20617,37.12722,0.0,0.6666666666666666,False,
+branch->trunk tag weights,Gunsan,126.76087,35.9977,0.0022444086609674,0.0,True,
+branch->trunk tag weights,Taegum,127.71528,34.93056,0.001709695681803,0.0,True,
+branch->trunk tag weights,Naju,126.71699,35.01426,0.0,0.0,True,
+branch->trunk tag weights,Heungguksa,127.67611,34.81667,0.0206300921993454,0.0,True,C
+branch->trunk tag weights,DaejeonYard,127.4225,36.37111,0.0,1.0,False,
+branch->trunk tag weights,Donghae,129.12276,37.49798,0.1070287893072053,0.5,False,B
+branch->trunk tag weights,Deokso,127.20944,37.58639,0.0037673603724204,1.0,False,
+branch->trunk tag weights,Mureung,128.6875,36.51917,0.0,0.0,True,
+branch->trunk tag weights,Susaek,126.89395,37.58176,0.0,0.0,True,C
+branch->trunk tag weights,Doan,127.61444,36.81333,0.0,0.0,True,
+branch->trunk tag weights,Dongsan,127.08778,35.875,0.0656455749465956,1.0,False,
+branch->trunk tag weights,ShingwangyangPort,127.64722,34.89778,0.0199161954283541,0.0,True,C
+branch->trunk tag weights,BusanNewPort,128.84629,35.11429,0.1270617696973466,1.0,False,A
+branch->trunk tag weights,Busanjin,129.04991,35.12873,0.0242748071833258,1.0,False,
+branch->trunk tag weights,Seokpo,129.06029,37.04596,0.0,1.0,False,
+branch->trunk tag weights,Eumseong,127.72612,36.92603,0.0,1.0,False,
+branch->trunk tag weights,Masan,128.57728,35.2359,0.0,0.0,True,
+branch->trunk tag weights,Yeongju,128.62575,36.81094,0.0412304294470662,0.6666666666666666,False,C
+branch->trunk tag weights,Mokpo,126.4,34.8,0.0,0.0,True,
+branch->trunk tag weights,Hwangdeung,126.94335,35.99972,0.0301028597937123,0.0,True,B
+branch->trunk tag weights,Munsu,128.63,36.76889,0.0,0.0,True,
+branch->trunk tag weights,BugangCargo,127.349,36.54419,0.0,0.0,True,
+branch->trunk tag weights,Sapgyo,126.75167,36.67028,0.0,0.0,True,
+branch->trunk tag weights,Yakmok,128.36417,36.03722,0.0041119718320056,1.0,False,
+branch->trunk tag weights,Seokhang,128.48528,37.19722,0.0,0.0,True,
+branch->trunk tag weights,Shindong,128.32861,35.95556,0.0,0.0,True,
+branch->trunk tag weights,Ssangryong,127.34,37.17439,0.032482383265283,0.0,True,C
+branch->trunk tag weights,Cheongju,127.24399,36.64671,0.0133496621962395,1.0,False,
+branch->trunk tag weights,Paldang,127.24454,37.53328,0.0,1.0,False,
+branch->trunk tag weights,Okgye,129.05054,37.61675,0.0,1.0,False,
+branch->trunk tag weights,Taehwagang,129.35417,35.53917,0.0,0.0,True,
+branch->trunk tag weights,Onsan,129.35103,35.42133,9.511710426146625e-05,0.0,True,
+branch->trunk tag weights,Cheoram,129.03696,37.11289,0.0316213575788307,1.0,False,
+branch->trunk tag weights,Iksan,126.9458,35.94164,0.0,0.0,True,
+branch->trunk tag weights,Jeokryang,127.70611,34.85556,0.0255473119158734,0.0,True,
+branch->trunk tag weights,Incheon,126.62662,37.47603,0.0,0.0,True,
+branch->trunk tag weights,Heukseokri,127.33913,36.25524,0.0,0.0,True,
+branch->trunk tag weights,Gyeongju,129.13889,35.79833,0.0,0.0,True,
+"original four, service share",Gaya,129.0427,35.15585,0.0,1.0,False,
+"original four, service share",Uiwang,126.94838,37.3211,0.0174322300369631,0.78125,False,
+"original four, service share",Gacheon,128.69306,35.85361,0.0,1.0,False,
+"original four, service share",JecheonYard,128.1785,37.12769,0.2262839645423223,0.7917981072555205,False,B
+"original four, service share",Ganchi,126.62076,36.20982,0.0,0.5,False,
+"original four, service share",Gwangyang,127.58778,34.95611,0.0154311924910763,0.0,True,C
+"original four, service share",Sillyewon,126.84972,36.72714,0.0,0.0,True,
+"original four, service share",Cheonan,127.14683,36.81012,3.5723667004328163e-05,0.35714285714285715,True,
+"original four, service share",Gwangwoondae,127.06191,37.62369,0.0,1.0,False,C
+"original four, service share",Dodam,128.3265,37.02436,0.0397392284521995,1.0,False,
+"original four, service share",Ipseokri,128.29764,37.19686,0.0,0.9351851851851851,False,C
+"original four, service share",Goedong,129.375,35.99667,0.0618531671281059,0.7333333333333334,False,A
+"original four, service share",Suncheon,127.50221,34.94637,0.0044084171972716,0.0,True,
+"original four, service share",Obong,126.96111,37.33611,0.0315791942375769,0.9293478260869565,False,A
+"original four, service share",Jecheon,128.20617,37.12722,0.0,1.0,False,
+"original four, service share",Gunsan,126.76087,35.9977,0.0022444086609674,0.0,True,
+"original four, service share",Taegum,127.71528,34.93056,0.001709695681803,0.14285714285714285,True,
+"original four, service share",Naju,126.71699,35.01426,0.0,0.0,True,
+"original four, service share",Heungguksa,127.67611,34.81667,0.0206300921993454,0.0,True,C
+"original four, service share",DaejeonYard,127.4225,36.37111,0.0,1.0,False,
+"original four, service share",Donghae,129.12276,37.49798,0.1070287893072053,0.7483443708609272,False,B
+"original four, service share",Deokso,127.20944,37.58639,0.0037673603724204,1.0,False,
+"original four, service share",Mureung,128.6875,36.51917,0.0,1.0,False,
+"original four, service share",Susaek,126.89395,37.58176,0.0,0.865979381443299,False,C
+"original four, service share",Doan,127.61444,36.81333,0.0,0.5,False,
+"original four, service share",Dongsan,127.08778,35.875,0.0656455749465956,0.0,True,
+"original four, service share",ShingwangyangPort,127.64722,34.89778,0.0199161954283541,0.0,True,C
+"original four, service share",BusanNewPort,128.84629,35.11429,0.1270617696973466,0.8525345622119815,False,A
+"original four, service share",Busanjin,129.04991,35.12873,0.0242748071833258,1.0,False,
+"original four, service share",Seokpo,129.06029,37.04596,0.0,1.0,False,
+"original four, service share",Eumseong,127.72612,36.92603,0.0,1.0,False,
+"original four, service share",Masan,128.57728,35.2359,0.0,1.0,False,
+"original four, service share",Yeongju,128.62575,36.81094,0.0412304294470662,1.0,False,C
+"original four, service share",Mokpo,126.4,34.8,0.0,0.0,True,
+"original four, service share",Hwangdeung,126.94335,35.99972,0.0301028597937123,0.0,True,B
+"original four, service share",Munsu,128.63,36.76889,0.0,1.0,False,
+"original four, service share",BugangCargo,127.349,36.54419,0.0,1.0,False,
+"original four, service share",Sapgyo,126.75167,36.67028,0.0,0.8235294117647058,False,
+"original four, service share",Yakmok,128.36417,36.03722,0.0041119718320056,1.0,False,
+"original four, service share",Seokhang,128.48528,37.19722,0.0,0.0,True,
+"original four, service share",Shindong,128.32861,35.95556,0.0,1.0,False,
+"original four, service share",Ssangryong,127.34,37.17439,0.032482383265283,1.0,False,C
+"original four, service share",Cheongju,127.24399,36.64671,0.0133496621962395,1.0,False,
+"original four, service share",Paldang,127.24454,37.53328,0.0,1.0,False,
+"original four, service share",Okgye,129.05054,37.61675,0.0,0.5384615384615384,False,
+"original four, service share",Taehwagang,129.35417,35.53917,0.0,1.0,False,
+"original four, service share",Onsan,129.35103,35.42133,9.511710426146625e-05,0.8181818181818181,False,
+"original four, service share",Cheoram,129.03696,37.11289,0.0316213575788307,0.7291666666666667,False,
+"original four, service share",Iksan,126.9458,35.94164,0.0,0.0,True,
+"original four, service share",Jeokryang,127.70611,34.85556,0.0255473119158734,0.0,True,
+"original four, service share",Incheon,126.62662,37.47603,0.0,1.0,False,
+"original four, service share",Heukseokri,127.33913,36.25524,0.0,1.0,False,
+"original four, service share",Gyeongju,129.13889,35.79833,0.0,1.0,False,
+"top-4 by train-km, service share",Gaya,129.0427,35.15585,0.0,1.0,False,
+"top-4 by train-km, service share",Uiwang,126.94838,37.3211,0.0174322300369631,1.0,False,
+"top-4 by train-km, service share",Gacheon,128.69306,35.85361,0.0,1.0,False,
+"top-4 by train-km, service share",JecheonYard,128.1785,37.12769,0.2262839645423223,0.7697160883280758,False,B
+"top-4 by train-km, service share",Ganchi,126.62076,36.20982,0.0,0.5,False,
+"top-4 by train-km, service share",Gwangyang,127.58778,34.95611,0.0154311924910763,0.25,True,C
+"top-4 by train-km, service share",Sillyewon,126.84972,36.72714,0.0,0.25,True,
+"top-4 by train-km, service share",Cheonan,127.14683,36.81012,3.5723667004328163e-05,0.5714285714285714,False,
+"top-4 by train-km, service share",Gwangwoondae,127.06191,37.62369,0.0,1.0,False,C
+"top-4 by train-km, service share",Dodam,128.3265,37.02436,0.0397392284521995,1.0,False,
+"top-4 by train-km, service share",Ipseokri,128.29764,37.19686,0.0,0.9351851851851851,False,C
+"top-4 by train-km, service share",Goedong,129.375,35.99667,0.0618531671281059,0.7333333333333334,False,A
+"top-4 by train-km, service share",Suncheon,127.50221,34.94637,0.0044084171972716,0.0,True,
+"top-4 by train-km, service share",Obong,126.96111,37.33611,0.0315791942375769,1.0,False,A
+"top-4 by train-km, service share",Jecheon,128.20617,37.12722,0.0,1.0,False,
+"top-4 by train-km, service share",Gunsan,126.76087,35.9977,0.0022444086609674,0.3,True,
+"top-4 by train-km, service share",Taegum,127.71528,34.93056,0.001709695681803,0.5714285714285714,False,
+"top-4 by train-km, service share",Naju,126.71699,35.01426,0.0,1.0,False,
+"top-4 by train-km, service share",Heungguksa,127.67611,34.81667,0.0206300921993454,0.7,False,C
+"top-4 by train-km, service share",DaejeonYard,127.4225,36.37111,0.0,1.0,False,
+"top-4 by train-km, service share",Donghae,129.12276,37.49798,0.1070287893072053,0.5298013245033113,False,B
+"top-4 by train-km, service share",Deokso,127.20944,37.58639,0.0037673603724204,1.0,False,
+"top-4 by train-km, service share",Mureung,128.6875,36.51917,0.0,1.0,False,
+"top-4 by train-km, service share",Susaek,126.89395,37.58176,0.0,0.865979381443299,False,C
+"top-4 by train-km, service share",Doan,127.61444,36.81333,0.0,0.5,False,
+"top-4 by train-km, service share",Dongsan,127.08778,35.875,0.0656455749465956,1.0,False,
+"top-4 by train-km, service share",ShingwangyangPort,127.64722,34.89778,0.0199161954283541,1.0,False,C
+"top-4 by train-km, service share",BusanNewPort,128.84629,35.11429,0.1270617696973466,0.8525345622119815,False,A
+"top-4 by train-km, service share",Busanjin,129.04991,35.12873,0.0242748071833258,1.0,False,
+"top-4 by train-km, service share",Seokpo,129.06029,37.04596,0.0,0.0,True,
+"top-4 by train-km, service share",Eumseong,127.72612,36.92603,0.0,1.0,False,
+"top-4 by train-km, service share",Masan,128.57728,35.2359,0.0,1.0,False,
+"top-4 by train-km, service share",Yeongju,128.62575,36.81094,0.0412304294470662,0.675,False,C
+"top-4 by train-km, service share",Mokpo,126.4,34.8,0.0,0.0,True,
+"top-4 by train-km, service share",Hwangdeung,126.94335,35.99972,0.0301028597937123,0.34782608695652173,True,B
+"top-4 by train-km, service share",Munsu,128.63,36.76889,0.0,1.0,False,
+"top-4 by train-km, service share",BugangCargo,127.349,36.54419,0.0,1.0,False,
+"top-4 by train-km, service share",Sapgyo,126.75167,36.67028,0.0,0.8235294117647058,False,
+"top-4 by train-km, service share",Yakmok,128.36417,36.03722,0.0041119718320056,1.0,False,
+"top-4 by train-km, service share",Seokhang,128.48528,37.19722,0.0,0.0,True,
+"top-4 by train-km, service share",Shindong,128.32861,35.95556,0.0,1.0,False,
+"top-4 by train-km, service share",Ssangryong,127.34,37.17439,0.032482383265283,1.0,False,C
+"top-4 by train-km, service share",Cheongju,127.24399,36.64671,0.0133496621962395,1.0,False,
+"top-4 by train-km, service share",Paldang,127.24454,37.53328,0.0,1.0,False,
+"top-4 by train-km, service share",Okgye,129.05054,37.61675,0.0,0.5384615384615384,False,
+"top-4 by train-km, service share",Taehwagang,129.35417,35.53917,0.0,1.0,False,
+"top-4 by train-km, service share",Onsan,129.35103,35.42133,9.511710426146625e-05,0.8181818181818181,False,
+"top-4 by train-km, service share",Cheoram,129.03696,37.11289,0.0316213575788307,0.5833333333333334,False,
+"top-4 by train-km, service share",Iksan,126.9458,35.94164,0.0,1.0,False,
+"top-4 by train-km, service share",Jeokryang,127.70611,34.85556,0.0255473119158734,1.0,False,
+"top-4 by train-km, service share",Incheon,126.62662,37.47603,0.0,1.0,False,
+"top-4 by train-km, service share",Heukseokri,127.33913,36.25524,0.0,1.0,False,
+"top-4 by train-km, service share",Gyeongju,129.13889,35.79833,0.0,1.0,False,

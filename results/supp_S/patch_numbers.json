@@ -1,0 +1,75 @@
+{
+  "spec_by_scope": [
+    {
+      "scope": "Original four (branch->trunk tags)",
+      "n_specs": 24,
+      "n_sig": 1,
+      "share_sig": 0.04167,
+      "median_effect": 0.01414,
+      "binom_p_vs_5pct (descriptive; specs are dependent)": 0.70801
+    },
+    {
+      "scope": "Original four (line-tag weights)",
+      "n_specs": 24,
+      "n_sig": 2,
+      "share_sig": 0.08333,
+      "median_effect": 0.03194,
+      "binom_p_vs_5pct (descriptive; specs are dependent)": 0.33918
+    },
+    {
+      "scope": "Original four (service share)",
+      "n_specs": 24,
+      "n_sig": 0,
+      "share_sig": 0.0,
+      "median_effect": -0.08321,
+      "binom_p_vs_5pct (descriptive; specs are dependent)": 1.0
+    },
+    {
+      "scope": "Reference top-4 (service share)",
+      "n_specs": 16,
+      "n_sig": 0,
+      "share_sig": 0.0,
+      "median_effect": -0.04125,
+      "binom_p_vs_5pct (descriptive; specs are dependent)": 1.0
+    }
+  ],
+  "candidate_frequency_line_tag": {
+    "Goedong": 1.0,
+    "Obong": 0.917,
+    "BusanNewPort": 0.833,
+    "Hwangdeung": 0.333,
+    "JecheonYard": 0.333,
+    "Donghae": 0.333,
+    "Ipseokri": 0.292,
+    "Ssangryong": 0.25,
+    "Susaek": 0.167,
+    "ShingwangyangPort": 0.167
+  },
+  "n_specs_line_tag": 24,
+  "table2_best_Degree": {
+    "column": "deg",
+    "gini": 0.4286608260325411,
+    "top3_pct": 31.914893617021292,
+    "n_for_80": 18
+  },
+  "table2_best_Betweenness": {
+    "column": "betw_dist",
+    "gini": 0.8096960926193923,
+    "top3_pct": 60.0578871201158,
+    "n_for_80": 6
+  },
+  "table2_best_Cascade (degree removal)": {
+    "column": "overload_a05",
+    "gini": 0.6665918275707237,
+    "top3_pct": 67.17557251908403,
+    "n_for_80": 10
+  },
+  "H2_observed_typical_of_rewired_ensemble": true,
+  "verdicts": {
+    "H1 out-of-scope more concentrated than in-scope (Holm)": false,
+    "H1b out-of-scope more concentrated than random same-size pool (Holm)": false,
+    "H2 observed concentration atypical of degree-preserving rewiring": false,
+    "H3 overlap exceeds information-matched null (any K / feature set)": false,
+    "H5 global clustering detected (BH)": false
+  }
+}

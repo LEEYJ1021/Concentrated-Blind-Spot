@@ -1,0 +1,9 @@
+﻿station,structural_rank,service_rank,demand_rank,in_reference_pool,structural_top,service_top,demand_top,layers_in_top
+Gwangyang,17,12,8.0,True,True,True,True,3
+Sillyewon,29,24,9.0,True,True,True,True,3
+Suncheon,19,38,26.0,True,True,True,True,3
+Seokpo,38,53,36.0,True,True,True,True,3
+Hwangdeung,11,16,32.0,True,True,True,True,3
+Mokpo,41,47,39.0,True,True,True,True,3
+Gunsan,22,35,,True,True,True,False,2
+Seokhang,45,45,,True,True,True,False,2

@@ -1,0 +1,73 @@
+﻿feature_set,dirichlet_alpha,station,selection_freq,exact_set_freq,n_distinct_sets
+"Full (closeness, eigenvector, service, betweenness)",0.5,Gunsan,1.0,0.508,3
+"Full (closeness, eigenvector, service, betweenness)",0.5,Suncheon,1.0,0.508,3
+"Full (closeness, eigenvector, service, betweenness)",0.5,Hwangdeung,1.0,0.508,3
+"Full (closeness, eigenvector, service, betweenness)",0.5,Gwangyang,0.754,0.508,3
+"Full (closeness, eigenvector, service, betweenness)",0.5,Seokpo,0.754,0.508,3
+"Full (closeness, eigenvector, service, betweenness)",0.5,Sillyewon,0.246,0.508,3
+"Full (closeness, eigenvector, service, betweenness)",0.5,Seokhang,0.246,0.508,3
+"Full (closeness, eigenvector, service, betweenness)",0.5,Mokpo,0.0,0.508,3
+"Full (closeness, eigenvector, service, betweenness)",1.0,Gunsan,1.0,0.686,4
+"Full (closeness, eigenvector, service, betweenness)",1.0,Suncheon,1.0,0.686,4
+"Full (closeness, eigenvector, service, betweenness)",1.0,Hwangdeung,1.0,0.686,4
+"Full (closeness, eigenvector, service, betweenness)",1.0,Seokpo,0.844,0.686,4
+"Full (closeness, eigenvector, service, betweenness)",1.0,Gwangyang,0.842,0.686,4
+"Full (closeness, eigenvector, service, betweenness)",1.0,Seokhang,0.159,0.686,4
+"Full (closeness, eigenvector, service, betweenness)",1.0,Sillyewon,0.155,0.686,4
+"Full (closeness, eigenvector, service, betweenness)",1.0,Mokpo,0.0,0.686,4
+"Full (closeness, eigenvector, service, betweenness)",5.0,Gunsan,1.0,0.957,3
+"Full (closeness, eigenvector, service, betweenness)",5.0,Suncheon,1.0,0.957,3
+"Full (closeness, eigenvector, service, betweenness)",5.0,Hwangdeung,1.0,0.957,3
+"Full (closeness, eigenvector, service, betweenness)",5.0,Gwangyang,0.995,0.957,3
+"Full (closeness, eigenvector, service, betweenness)",5.0,Seokpo,0.962,0.957,3
+"Full (closeness, eigenvector, service, betweenness)",5.0,Sillyewon,0.038,0.957,3
+"Full (closeness, eigenvector, service, betweenness)",5.0,Seokhang,0.005,0.957,3
+"Full (closeness, eigenvector, service, betweenness)",5.0,Mokpo,0.0,0.957,3
+"Service-augmented (closeness, eigenvector, service)",0.5,Gunsan,1.0,0.277,4
+"Service-augmented (closeness, eigenvector, service)",0.5,Suncheon,1.0,0.277,4
+"Service-augmented (closeness, eigenvector, service)",0.5,Hwangdeung,1.0,0.277,4
+"Service-augmented (closeness, eigenvector, service)",0.5,Seokpo,0.736,0.277,4
+"Service-augmented (closeness, eigenvector, service)",0.5,Gwangyang,0.541,0.277,4
+"Service-augmented (closeness, eigenvector, service)",0.5,Seokhang,0.465,0.277,4
+"Service-augmented (closeness, eigenvector, service)",0.5,Sillyewon,0.258,0.277,4
+"Service-augmented (closeness, eigenvector, service)",0.5,Mokpo,0.0,0.277,4
+"Service-augmented (closeness, eigenvector, service)",1.0,Gunsan,1.0,0.392,4
+"Service-augmented (closeness, eigenvector, service)",1.0,Suncheon,1.0,0.392,4
+"Service-augmented (closeness, eigenvector, service)",1.0,Hwangdeung,1.0,0.392,4
+"Service-augmented (closeness, eigenvector, service)",1.0,Seokpo,0.799,0.392,4
+"Service-augmented (closeness, eigenvector, service)",1.0,Gwangyang,0.593,0.392,4
+"Service-augmented (closeness, eigenvector, service)",1.0,Seokhang,0.408,0.392,4
+"Service-augmented (closeness, eigenvector, service)",1.0,Sillyewon,0.2,0.392,4
+"Service-augmented (closeness, eigenvector, service)",1.0,Mokpo,0.0,0.392,4
+"Service-augmented (closeness, eigenvector, service)",5.0,Gunsan,1.0,0.803,3
+"Service-augmented (closeness, eigenvector, service)",5.0,Suncheon,1.0,0.803,3
+"Service-augmented (closeness, eigenvector, service)",5.0,Hwangdeung,1.0,0.803,3
+"Service-augmented (closeness, eigenvector, service)",5.0,Seokpo,0.965,0.803,3
+"Service-augmented (closeness, eigenvector, service)",5.0,Gwangyang,0.838,0.803,3
+"Service-augmented (closeness, eigenvector, service)",5.0,Seokhang,0.162,0.803,3
+"Service-augmented (closeness, eigenvector, service)",5.0,Sillyewon,0.035,0.803,3
+"Service-augmented (closeness, eigenvector, service)",5.0,Mokpo,0.0,0.803,3
+"Distinct only (closeness, eigenvector)",0.5,Gunsan,1.0,1.0,1
+"Distinct only (closeness, eigenvector)",0.5,Suncheon,1.0,1.0,1
+"Distinct only (closeness, eigenvector)",0.5,Hwangdeung,1.0,1.0,1
+"Distinct only (closeness, eigenvector)",0.5,Seokpo,1.0,1.0,1
+"Distinct only (closeness, eigenvector)",0.5,Seokhang,1.0,1.0,1
+"Distinct only (closeness, eigenvector)",0.5,Sillyewon,0.0,1.0,1
+"Distinct only (closeness, eigenvector)",0.5,Gwangyang,0.0,1.0,1
+"Distinct only (closeness, eigenvector)",0.5,Mokpo,0.0,1.0,1
+"Distinct only (closeness, eigenvector)",1.0,Gunsan,1.0,1.0,1
+"Distinct only (closeness, eigenvector)",1.0,Suncheon,1.0,1.0,1
+"Distinct only (closeness, eigenvector)",1.0,Hwangdeung,1.0,1.0,1
+"Distinct only (closeness, eigenvector)",1.0,Seokpo,1.0,1.0,1
+"Distinct only (closeness, eigenvector)",1.0,Seokhang,1.0,1.0,1
+"Distinct only (closeness, eigenvector)",1.0,Sillyewon,0.0,1.0,1
+"Distinct only (closeness, eigenvector)",1.0,Gwangyang,0.0,1.0,1
+"Distinct only (closeness, eigenvector)",1.0,Mokpo,0.0,1.0,1
+"Distinct only (closeness, eigenvector)",5.0,Gunsan,1.0,1.0,1
+"Distinct only (closeness, eigenvector)",5.0,Suncheon,1.0,1.0,1
+"Distinct only (closeness, eigenvector)",5.0,Hwangdeung,1.0,1.0,1
+"Distinct only (closeness, eigenvector)",5.0,Seokpo,1.0,1.0,1
+"Distinct only (closeness, eigenvector)",5.0,Seokhang,1.0,1.0,1
+"Distinct only (closeness, eigenvector)",5.0,Sillyewon,0.0,1.0,1
+"Distinct only (closeness, eigenvector)",5.0,Gwangyang,0.0,1.0,1
+"Distinct only (closeness, eigenvector)",5.0,Mokpo,0.0,1.0,1

@@ -1,0 +1,15 @@
+﻿station,frequency,tier
+Goedong,1.0,A (core)
+Obong,0.9166666666666666,A (core)
+BusanNewPort,0.8333333333333334,A (core)
+Hwangdeung,0.3333333333333333,B
+JecheonYard,0.3333333333333333,B
+Donghae,0.3333333333333333,B
+Ipseokri,0.2916666666666667,C
+Ssangryong,0.25,C
+Susaek,0.1666666666666666,C
+ShingwangyangPort,0.1666666666666666,C
+Gwangyang,0.125,C
+Heungguksa,0.0833333333333333,C
+Gwangwoondae,0.0833333333333333,C
+Yeongju,0.0833333333333333,C

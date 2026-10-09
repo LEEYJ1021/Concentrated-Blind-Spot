@@ -1,0 +1,216 @@
+{
+  "seed": 20261012,
+  "quick_mode": false,
+  "config": {
+    "alpha": 0.05,
+    "planted_m": [
+      0,
+      1,
+      2,
+      3,
+      5
+    ],
+    "plant_ref": 3
+  },
+  "n_pool_manuscript": 34,
+  "size_eligible": {
+    "gini_diff_out_minus_in": true,
+    "gini_pool": true,
+    "pool_mean_rank": true,
+    "pool_share (OCG)": false,
+    "top11_leakage": true,
+    "top5_leakage": true
+  },
+  "power_at_ref": {
+    "gini_diff_out_minus_in": 0.1216,
+    "gini_pool": 0.0732,
+    "pool_mean_rank": 0.1201,
+    "pool_share (OCG)": 0.1938,
+    "top11_leakage": 0.1074,
+    "top5_leakage": 0.0
+  },
+  "chosen_statistic": "gini_diff_out_minus_in",
+  "mde_m": {},
+  "korea_primary": [
+    {
+      "scope": "manuscript line-tag (34)",
+      "n_pool": 34,
+      "indicator": "eff_loss_dist",
+      "statistic": "gini_diff_out_minus_in",
+      "observed": 0.08204,
+      "null_mean": 0.01728,
+      "effect": 0.06475,
+      "p_upper": 0.22594,
+      "is_primary": true,
+      "p_holm_family": 0.45188
+    },
+    {
+      "scope": "manuscript line-tag (34)",
+      "n_pool": 34,
+      "indicator": "betw_dist",
+      "statistic": "gini_diff_out_minus_in",
+      "observed": 0.13375,
+      "null_mean": 0.01686,
+      "effect": 0.11689,
+      "p_upper": 0.11004,
+      "is_primary": true,
+      "p_holm_family": 0.33013
+    },
+    {
+      "scope": "manuscript line-tag (34)",
+      "n_pool": 34,
+      "indicator": "betw_unw",
+      "statistic": "gini_diff_out_minus_in",
+      "observed": 0.07882,
+      "null_mean": 0.01889,
+      "effect": 0.05994,
+      "p_upper": 0.22574,
+      "is_primary": true,
+      "p_holm_family": NaN
+    },
+    {
+      "scope": "manuscript line-tag (34)",
+      "n_pool": 34,
+      "indicator": "eig_unw",
+      "statistic": "gini_diff_out_minus_in",
+      "observed": 0.10953,
+      "null_mean": 0.01137,
+      "effect": 0.09816,
+      "p_upper": 0.11324,
+      "is_primary": true,
+      "p_holm_family": NaN
+    },
+    {
+      "scope": "manuscript line-tag (34)",
+      "n_pool": 34,
+      "indicator": "service_km",
+      "statistic": "gini_diff_out_minus_in",
+      "observed": 0.08301,
+      "null_mean": 0.0232,
+      "effect": 0.05982,
+      "p_upper": 0.31373,
+      "is_primary": true,
+      "p_holm_family": 0.45188
+    },
+    {
+      "scope": "branch->trunk tags",
+      "n_pool": 32,
+      "indicator": "eff_loss_dist",
+      "statistic": "gini_diff_out_minus_in",
+      "observed": 0.05818,
+      "null_mean": 0.01286,
+      "effect": 0.04531,
+      "p_upper": 0.30143,
+      "is_primary": true,
+      "p_holm_family": 0.60287
+    },
+    {
+      "scope": "branch->trunk tags",
+      "n_pool": 32,
+      "indicator": "betw_dist",
+      "statistic": "gini_diff_out_minus_in",
+      "observed": 0.11343,
+      "null_mean": 0.01288,
+      "effect": 0.10055,
+      "p_upper": 0.14459,
+      "is_primary": true,
+      "p_holm_family": 0.43378
+    },
+    {
+      "scope": "branch->trunk tags",
+      "n_pool": 32,
+      "indicator": "betw_unw",
+      "statistic": "gini_diff_out_minus_in",
+      "observed": 0.05515,
+      "null_mean": 0.01416,
+      "effect": 0.04099,
+      "p_upper": 0.29339,
+      "is_primary": true,
+      "p_holm_family": NaN
+    },
+    {
+      "scope": "branch->trunk tags",
+      "n_pool": 32,
+      "indicator": "eig_unw",
+      "statistic": "gini_diff_out_minus_in",
+      "observed": 0.09881,
+      "null_mean": 0.00791,
+      "effect": 0.09091,
+      "p_upper": 0.12734,
+      "is_primary": true,
+      "p_holm_family": NaN
+    },
+    {
+      "scope": "branch->trunk tags",
+      "n_pool": 32,
+      "indicator": "service_km",
+      "statistic": "gini_diff_out_minus_in",
+      "observed": 0.03062,
+      "null_mean": 0.01776,
+      "effect": 0.01286,
+      "p_upper": 0.46773,
+      "is_primary": true,
+      "p_holm_family": 0.60287
+    },
+    {
+      "scope": "original four, service share",
+      "n_pool": 15,
+      "indicator": "eff_loss_dist",
+      "statistic": "gini_diff_out_minus_in",
+      "observed": -0.14418,
+      "null_mean": -0.0305,
+      "effect": -0.11368,
+      "p_upper": 0.88566,
+      "is_primary": true,
+      "p_holm_family": 1.0
+    },
+    {
+      "scope": "original four, service share",
+      "n_pool": 15,
+      "indicator": "betw_dist",
+      "statistic": "gini_diff_out_minus_in",
+      "observed": -0.2295,
+      "null_mean": -0.02998,
+      "effect": -0.19952,
+      "p_upper": 0.97385,
+      "is_primary": true,
+      "p_holm_family": 1.0
+    },
+    {
+      "scope": "original four, service share",
+      "n_pool": 15,
+      "indicator": "betw_unw",
+      "statistic": "gini_diff_out_minus_in",
+      "observed": -0.26904,
+      "null_mean": -0.0342,
+      "effect": -0.23484,
+      "p_upper": 0.98995,
+      "is_primary": true,
+      "p_holm_family": NaN
+    },
+    {
+      "scope": "original four, service share",
+      "n_pool": 15,
+      "indicator": "eig_unw",
+      "statistic": "gini_diff_out_minus_in",
+      "observed": 0.07593,
+      "null_mean": -0.0204,
+      "effect": 0.09632,
+      "p_upper": 0.13284,
+      "is_primary": true,
+      "p_holm_family": NaN
+    },
+    {
+      "scope": "original four, service share",
+      "n_pool": 15,
+      "indicator": "service_km",
+      "statistic": "gini_diff_out_minus_in",
+      "observed": -0.25237,
+      "null_mean": -0.04235,
+      "effect": -0.21002,
+      "p_upper": 0.9735,
+      "is_primary": true,
+      "p_holm_family": 1.0
+    }
+  ]
+}

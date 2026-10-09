@@ -1,0 +1,4 @@
+﻿feature_set,overlap,K,pool,p_uniform_exact,spearman_B_vs_composite,p_information_matched,p_information_matched_mcse,expected_overlap_uniform
+"Full (closeness, eigenvector, service, betweenness)",4,5,8,0.28571428571428564,0.9132233209773138,0.9448811023779524,0.0010205959508735845,3.125
+"Service-augmented (closeness, eigenvector, service)",4,5,8,0.28571428571428564,0.6849174907329854,0.6992660146797064,0.0020508196185606725,3.125
+"Distinct only (closeness, eigenvector)",3,5,8,0.8214285714285715,0.1775712013011444,0.878662426751465,0.0014602381077529199,3.125

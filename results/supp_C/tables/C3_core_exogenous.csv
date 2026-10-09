@@ -1,0 +1,6 @@
+﻿exogenous,n_pool_with_data,core_with_data,core_missing,core_mean_percentile,null_mean,p_one_sided,core_percentiles,p_holm
+dep_events,20,2,Obong,0.625,0.5,0.33613277344531095,Goedong:0.55|BusanNewPort:0.70,1.0
+arr_events,22,2,Obong,0.38636363636363635,0.5,0.7554489102179565,Goedong:0.59|BusanNewPort:0.18,1.0
+loaded_wagons,20,2,Obong,0.625,0.5,0.34933013397320534,Goedong:0.60|BusanNewPort:0.65,1.0
+req_wagons_dep,20,2,Obong,0.6000000000000001,0.5,0.3547290541891622,Goedong:0.55|BusanNewPort:0.65,1.0
+wagon_flow,23,2,Obong,0.6304347826086957,0.5,0.30453909218156366,Goedong:0.65|BusanNewPort:0.61,1.0

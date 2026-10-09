@@ -1,0 +1,25 @@
+﻿feature_set,method,set,objective,coverage_of_total,ratio_to_exact
+"Full (closeness, eigenvector, service, betweenness)",Greedy (proposed),Hwangdeung|Suncheon|Gwangyang|Seokpo|Gunsan,2.37936320754717,0.80708,1.0
+"Full (closeness, eigenvector, service, betweenness)",Exact optimum,Gwangyang|Suncheon|Gunsan|Seokpo|Hwangdeung,2.37936320754717,0.80708,1.0
+"Full (closeness, eigenvector, service, betweenness)",Stage-B top-K,Hwangdeung|Gwangyang|Suncheon|Gunsan|Sillyewon,2.190801886792453,0.74312,0.9207513505476532
+"Full (closeness, eigenvector, service, betweenness)",Composite top-K (no overlap discount),Hwangdeung|Suncheon|Gwangyang|Gunsan|Seokpo,2.37936320754717,0.80708,1.0
+"Full (closeness, eigenvector, service, betweenness)",Single feature: close_dist,Seokpo|Suncheon|Hwangdeung|Gunsan|Seokhang,2.173702830188679,0.73732,0.9135649501908113
+"Full (closeness, eigenvector, service, betweenness)",Single feature: eig_unw,Suncheon|Seokpo|Seokhang|Hwangdeung|Gunsan,2.173702830188679,0.73732,0.9135649501908113
+"Full (closeness, eigenvector, service, betweenness)",Single feature: service_km,Gwangyang|Hwangdeung|Sillyewon|Gunsan|Suncheon,2.190801886792453,0.74312,0.9207513505476532
+"Full (closeness, eigenvector, service, betweenness)",Single feature: betw_dist,Hwangdeung|Suncheon|Gwangyang|Gunsan|Sillyewon,2.190801886792453,0.74312,0.9207513505476532
+"Full (closeness, eigenvector, service, betweenness)",Random (mean of 2000),,1.9248159198113208,0.65289756,0.8089626307181444
+"Service-augmented (closeness, eigenvector, service)",Greedy (proposed),Hwangdeung|Suncheon|Seokpo|Gwangyang|Gunsan,2.081682389937107,0.800453446191052,1.0
+"Service-augmented (closeness, eigenvector, service)",Exact optimum,Gwangyang|Suncheon|Gunsan|Seokpo|Hwangdeung,2.081682389937107,0.800453446191052,1.0
+"Service-augmented (closeness, eigenvector, service)",Stage-B top-K,Hwangdeung|Gwangyang|Suncheon|Gunsan|Sillyewon,1.8439465408805031,0.7090386940749698,0.8857962914007327
+"Service-augmented (closeness, eigenvector, service)",Composite top-K (no overlap discount),Hwangdeung|Suncheon|Seokpo|Gunsan|Gwangyang,2.081682389937107,0.800453446191052,1.0
+"Service-augmented (closeness, eigenvector, service)",Single feature: close_dist,Seokpo|Suncheon|Hwangdeung|Gunsan|Seokhang,1.972641509433962,0.7585247883917774,0.9476188677820159
+"Service-augmented (closeness, eigenvector, service)",Single feature: eig_unw,Suncheon|Seokpo|Seokhang|Hwangdeung|Gunsan,1.972641509433962,0.7585247883917774,0.9476188677820159
+"Service-augmented (closeness, eigenvector, service)",Single feature: service_km,Gwangyang|Hwangdeung|Sillyewon|Gunsan|Suncheon,1.8439465408805031,0.7090386940749698,0.8857962914007327
+"Service-augmented (closeness, eigenvector, service)",Random (mean of 2000),,1.6954775943396225,0.6519490628778718,0.814474678046754
+"Distinct only (closeness, eigenvector)",Greedy (proposed),Seokpo|Suncheon|Hwangdeung|Gunsan|Seokhang,2.1660377358490566,0.9129224652087474,1.0
+"Distinct only (closeness, eigenvector)",Exact optimum,Suncheon|Gunsan|Seokpo|Hwangdeung|Seokhang,2.1660377358490566,0.9129224652087474,1.0
+"Distinct only (closeness, eigenvector)",Stage-B top-K,Hwangdeung|Gwangyang|Suncheon|Gunsan|Sillyewon,1.3817216981132074,0.5823558648111331,0.6379028745644599
+"Distinct only (closeness, eigenvector)",Composite top-K (no overlap discount),Seokpo|Suncheon|Hwangdeung|Gunsan|Seokhang,2.1660377358490566,0.9129224652087474,1.0
+"Distinct only (closeness, eigenvector)",Single feature: close_dist,Seokpo|Suncheon|Hwangdeung|Gunsan|Seokhang,2.1660377358490566,0.9129224652087474,1.0
+"Distinct only (closeness, eigenvector)",Single feature: eig_unw,Suncheon|Seokpo|Seokhang|Hwangdeung|Gunsan,2.1660377358490566,0.9129224652087474,1.0
+"Distinct only (closeness, eigenvector)",Random (mean of 2000),,1.5335186320754717,0.6463338966202783,0.7079833405923345
