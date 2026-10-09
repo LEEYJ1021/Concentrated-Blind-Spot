@@ -1,0 +1,5 @@
+﻿lambda,greedy_set,exact_set,greedy_over_exact,jaccard_vs_lambda0.30
+0.0,Hwangdeung|Suncheon|Gwangyang|Gunsan|Seokpo,Gwangyang|Suncheon|Gunsan|Seokpo|Hwangdeung,1.0,
+0.15,Hwangdeung|Suncheon|Gwangyang|Seokpo|Gunsan,Gwangyang|Suncheon|Gunsan|Seokpo|Hwangdeung,1.0,
+0.3,Hwangdeung|Suncheon|Gwangyang|Seokpo|Gunsan,Gwangyang|Suncheon|Gunsan|Seokpo|Hwangdeung,1.0,
+0.5,Hwangdeung|Suncheon|Gwangyang|Seokpo|Gunsan,Gwangyang|Suncheon|Gunsan|Seokpo|Hwangdeung,1.0,

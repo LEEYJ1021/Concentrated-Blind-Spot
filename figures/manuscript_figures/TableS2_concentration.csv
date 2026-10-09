@@ -1,0 +1,5 @@
+﻿indicator,gini,top3_share_pct,n_for_80pct,zero_values
+Betweenness (unweighted),0.787,65.1,7,15
+Cascade impact (overload),0.667,67.2,10,0
+Degree,0.429,31.9,18,0
+Efficiency loss (distance),0.823,59.3,6,21

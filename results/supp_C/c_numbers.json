@@ -1,0 +1,338 @@
+{
+  "seed": 20261011,
+  "quick_mode": false,
+  "config": {
+    "alpha": 0.05,
+    "delta": 0.05,
+    "core_freq": 0.8,
+    "planted_m": [
+      0,
+      1,
+      2,
+      3,
+      5
+    ]
+  },
+  "n_stations": 53,
+  "n_pool_manuscript": 34,
+  "indicators": [
+    "eff_loss_dist",
+    "betw_dist",
+    "betw_unw",
+    "eig_unw",
+    "service_km"
+  ],
+  "size_at_m0": {
+    "dirichlet_min": 0.0,
+    "dirichlet_max": 1.0,
+    "randompool_min": 0.04466666666666667,
+    "randompool_max": 0.055
+  },
+  "min_detectable_m_80pct_power": {
+    "betw_dist": null,
+    "betw_unw": null,
+    "eff_loss_dist": null,
+    "eig_unw": null,
+    "service_km": null
+  },
+  "typicality": [
+    {
+      "variant": "degree-preserving",
+      "statistic": "gini_all53",
+      "observed": 0.809,
+      "ensemble_mean": 0.8109,
+      "pi_lo": 0.75825,
+      "pi_hi": 0.85503,
+      "inside_95PI": true,
+      "abs_diff": 0.0019,
+      "within_delta": true,
+      "n_valid": 1000
+    },
+    {
+      "variant": "degree-preserving",
+      "statistic": "gini_pool",
+      "observed": 0.8524,
+      "ensemble_mean": 0.82286,
+      "pi_lo": 0.7514,
+      "pi_hi": 0.88083,
+      "inside_95PI": true,
+      "abs_diff": 0.02955,
+      "within_delta": true,
+      "n_valid": 1000
+    },
+    {
+      "variant": "degree-preserving",
+      "statistic": "top3_all53",
+      "observed": 0.45847,
+      "ensemble_mean": 0.46113,
+      "pi_lo": 0.3499,
+      "pi_hi": 0.57384,
+      "inside_95PI": true,
+      "abs_diff": 0.00267,
+      "within_delta": true,
+      "n_valid": 1000
+    },
+    {
+      "variant": "degree-preserving + length-constrained 25%",
+      "statistic": "gini_all53",
+      "observed": 0.809,
+      "ensemble_mean": 0.80894,
+      "pi_lo": 0.75475,
+      "pi_hi": 0.8534,
+      "inside_95PI": true,
+      "abs_diff": 6e-05,
+      "within_delta": true,
+      "n_valid": 1000
+    },
+    {
+      "variant": "degree-preserving + length-constrained 25%",
+      "statistic": "gini_pool",
+      "observed": 0.8524,
+      "ensemble_mean": 0.81916,
+      "pi_lo": 0.74184,
+      "pi_hi": 0.88119,
+      "inside_95PI": true,
+      "abs_diff": 0.03324,
+      "within_delta": true,
+      "n_valid": 1000
+    },
+    {
+      "variant": "degree-preserving + length-constrained 25%",
+      "statistic": "top3_all53",
+      "observed": 0.45847,
+      "ensemble_mean": 0.45804,
+      "pi_lo": 0.35699,
+      "pi_hi": 0.55698,
+      "inside_95PI": true,
+      "abs_diff": 0.00042,
+      "within_delta": true,
+      "n_valid": 1000
+    }
+  ],
+  "core": [
+    "Goedong",
+    "Obong",
+    "BusanNewPort"
+  ],
+  "core_exogenous": [
+    {
+      "exogenous": "dep_events",
+      "n_pool_with_data": 20,
+      "core_with_data": 2,
+      "core_missing": "Obong",
+      "core_mean_percentile": 0.625,
+      "null_mean": 0.5,
+      "p_one_sided": 0.33613,
+      "core_percentiles": "Goedong:0.55|BusanNewPort:0.70",
+      "p_holm": 1.0
+    },
+    {
+      "exogenous": "arr_events",
+      "n_pool_with_data": 22,
+      "core_with_data": 2,
+      "core_missing": "Obong",
+      "core_mean_percentile": 0.38636,
+      "null_mean": 0.5,
+      "p_one_sided": 0.75545,
+      "core_percentiles": "Goedong:0.59|BusanNewPort:0.18",
+      "p_holm": 1.0
+    },
+    {
+      "exogenous": "loaded_wagons",
+      "n_pool_with_data": 20,
+      "core_with_data": 2,
+      "core_missing": "Obong",
+      "core_mean_percentile": 0.625,
+      "null_mean": 0.5,
+      "p_one_sided": 0.34933,
+      "core_percentiles": "Goedong:0.60|BusanNewPort:0.65",
+      "p_holm": 1.0
+    },
+    {
+      "exogenous": "req_wagons_dep",
+      "n_pool_with_data": 20,
+      "core_with_data": 2,
+      "core_missing": "Obong",
+      "core_mean_percentile": 0.6,
+      "null_mean": 0.5,
+      "p_one_sided": 0.35473,
+      "core_percentiles": "Goedong:0.55|BusanNewPort:0.65",
+      "p_holm": 1.0
+    },
+    {
+      "exogenous": "wagon_flow",
+      "n_pool_with_data": 23,
+      "core_with_data": 2,
+      "core_missing": "Obong",
+      "core_mean_percentile": 0.63043,
+      "null_mean": 0.5,
+      "p_one_sided": 0.30454,
+      "core_percentiles": "Goedong:0.65|BusanNewPort:0.61",
+      "p_holm": 1.0
+    }
+  ],
+  "synthetic_size": [
+    {
+      "topology": "BA",
+      "n": 53,
+      "indicator": "degree",
+      "n_networks": 30,
+      "dirichlet_size_mean": 0.0,
+      "dirichlet_size_min": 0.0,
+      "dirichlet_size_max": 0.0
+    },
+    {
+      "topology": "BA",
+      "n": 53,
+      "indicator": "betweenness",
+      "n_networks": 30,
+      "dirichlet_size_mean": 0.9973,
+      "dirichlet_size_min": 0.964,
+      "dirichlet_size_max": 1.0
+    },
+    {
+      "topology": "BA",
+      "n": 53,
+      "indicator": "closeness",
+      "n_networks": 30,
+      "dirichlet_size_mean": 0.0,
+      "dirichlet_size_min": 0.0,
+      "dirichlet_size_max": 0.0
+    },
+    {
+      "topology": "WS",
+      "n": 53,
+      "indicator": "degree",
+      "n_networks": 30,
+      "dirichlet_size_mean": 0.0,
+      "dirichlet_size_min": 0.0,
+      "dirichlet_size_max": 0.0
+    },
+    {
+      "topology": "WS",
+      "n": 53,
+      "indicator": "betweenness",
+      "n_networks": 30,
+      "dirichlet_size_mean": 0.0003,
+      "dirichlet_size_min": 0.0,
+      "dirichlet_size_max": 0.01
+    },
+    {
+      "topology": "WS",
+      "n": 53,
+      "indicator": "closeness",
+      "n_networks": 30,
+      "dirichlet_size_mean": 0.0,
+      "dirichlet_size_min": 0.0,
+      "dirichlet_size_max": 0.0
+    },
+    {
+      "topology": "ER",
+      "n": 53,
+      "indicator": "degree",
+      "n_networks": 30,
+      "dirichlet_size_mean": 0.0,
+      "dirichlet_size_min": 0.0,
+      "dirichlet_size_max": 0.0
+    },
+    {
+      "topology": "ER",
+      "n": 53,
+      "indicator": "betweenness",
+      "n_networks": 30,
+      "dirichlet_size_mean": 0.0,
+      "dirichlet_size_min": 0.0,
+      "dirichlet_size_max": 0.0
+    },
+    {
+      "topology": "ER",
+      "n": 53,
+      "indicator": "closeness",
+      "n_networks": 30,
+      "dirichlet_size_mean": 0.0,
+      "dirichlet_size_min": 0.0,
+      "dirichlet_size_max": 0.0
+    },
+    {
+      "topology": "BA",
+      "n": 100,
+      "indicator": "degree",
+      "n_networks": 30,
+      "dirichlet_size_mean": 0.0,
+      "dirichlet_size_min": 0.0,
+      "dirichlet_size_max": 0.0
+    },
+    {
+      "topology": "BA",
+      "n": 100,
+      "indicator": "betweenness",
+      "n_networks": 30,
+      "dirichlet_size_mean": 1.0,
+      "dirichlet_size_min": 1.0,
+      "dirichlet_size_max": 1.0
+    },
+    {
+      "topology": "BA",
+      "n": 100,
+      "indicator": "closeness",
+      "n_networks": 30,
+      "dirichlet_size_mean": 0.0,
+      "dirichlet_size_min": 0.0,
+      "dirichlet_size_max": 0.0
+    },
+    {
+      "topology": "WS",
+      "n": 100,
+      "indicator": "degree",
+      "n_networks": 30,
+      "dirichlet_size_mean": 0.0,
+      "dirichlet_size_min": 0.0,
+      "dirichlet_size_max": 0.0
+    },
+    {
+      "topology": "WS",
+      "n": 100,
+      "indicator": "betweenness",
+      "n_networks": 30,
+      "dirichlet_size_mean": 0.0144,
+      "dirichlet_size_min": 0.0,
+      "dirichlet_size_max": 0.426
+    },
+    {
+      "topology": "WS",
+      "n": 100,
+      "indicator": "closeness",
+      "n_networks": 30,
+      "dirichlet_size_mean": 0.0,
+      "dirichlet_size_min": 0.0,
+      "dirichlet_size_max": 0.0
+    },
+    {
+      "topology": "ER",
+      "n": 100,
+      "indicator": "degree",
+      "n_networks": 30,
+      "dirichlet_size_mean": 0.0,
+      "dirichlet_size_min": 0.0,
+      "dirichlet_size_max": 0.0
+    },
+    {
+      "topology": "ER",
+      "n": 100,
+      "indicator": "betweenness",
+      "n_networks": 30,
+      "dirichlet_size_mean": 0.0,
+      "dirichlet_size_min": 0.0,
+      "dirichlet_size_max": 0.0
+    },
+    {
+      "topology": "ER",
+      "n": 100,
+      "indicator": "closeness",
+      "n_networks": 30,
+      "dirichlet_size_mean": 0.0,
+      "dirichlet_size_min": 0.0,
+      "dirichlet_size_max": 0.0
+    }
+  ]
+}

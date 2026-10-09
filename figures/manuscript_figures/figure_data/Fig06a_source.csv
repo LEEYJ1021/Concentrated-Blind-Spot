@@ -1,0 +1,10 @@
+﻿m,best_design,best_coverage,median_coverage,reference_coverage,original_coverage
+1,Jungang,0.2301739906109701,0.069788135822872,,
+2,Gyeongbu + Jungang,0.4277845203591168,0.2059510202603541,,
+3,Gyeongbu + Jungang + Chungbuk,0.6140590756298108,0.2878597665914613,,
+4,Gyeongbu + Jeolla + Jungang + Chungbuk,0.7800923178584442,0.4111526377241117,0.7800923178584442,0.6735706553744969
+5,Gyeongbu + Jeolla + Jungang + Chungbuk + Taebaek,0.8601570097595024,0.5,,
+6,Gyeongbu + Yeongdong + Jeolla + Jungang + Chungbuk + Taebaek,0.9196685895041884,0.5888473622758883,,
+7,Gyeongbu + Gyeongjeon + Yeongdong + Jeolla + Jungang + Chungbuk + Taebaek,0.973399186814631,0.7121402334085387,,
+8,Gyeongbu + Gyeongjeon + Yeongdong + Janghang + Jeolla + Jungang + Chungbuk + Taebaek,0.9930756518042912,0.7940489797396457,,
+9,Gyeongbu + Gyeongjeon + Yeongdong + Janghang + Jeolla + Jungang + Chungbuk + Taebaek + Honam,0.999981749334146,0.930211864177128,,

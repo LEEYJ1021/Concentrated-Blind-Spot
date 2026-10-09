@@ -1,0 +1,6 @@
+﻿exogenous,n_pool_with_data,core_with_data,core_missing,percentile_Goedong,percentile_Obong,percentile_Busan New Port,p_one_sided,p_holm
+dep events,20,2,Obong,0.55,,0.7,0.336,1.0
+arr events,22,2,Obong,0.59,,0.18,0.755,1.0
+loaded wagons,20,2,Obong,0.6,,0.65,0.349,1.0
+req wagons dep,20,2,Obong,0.55,,0.65,0.355,1.0
+wagon flow,23,2,Obong,0.65,,0.61,0.305,1.0

@@ -1,0 +1,657 @@
+{
+  "seed": 20261009,
+  "quick_mode": false,
+  "n_stations": 53,
+  "n_trains": 217,
+  "timetable_reference_year": "UNKNOWN - author must state (R1-8)",
+  "n_edges_undirected": 86,
+  "edges_with_asymmetric_distance": 6,
+  "connected": true,
+  "reproduction": {
+    "spearman(betw_dist, legacy betweenness)": 0.917664033303373,
+    "spearman(close_dist, legacy closeness)": 0.9999999999999999,
+    "spearman(deg, legacy degree)": 0.9999999999999999,
+    "legacy_cascade_reproduction_max_abs_diff": 8.673617379884035e-17
+  },
+  "overload_extra_nodes": 14,
+  "alpha_mean_impact": {
+    "02": 0.25667497330010675,
+    "05": 0.08259166963332149,
+    "08": 0.04663581345674618
+  },
+  "top_collapse_nodes": [
+    "JecheonYard",
+    "Obong",
+    "Goedong"
+  ],
+  "n_lines": 10,
+  "n_designs": 1022,
+  "reference_lines": [
+    "Gyeongbu",
+    "Jungang",
+    "Chungbuk",
+    "Jeolla"
+  ],
+  "original_four_present": [
+    "Gyeongbu",
+    "Chungbuk",
+    "Yeongdong",
+    "Jungang"
+  ],
+  "reference_equals_original": false,
+  "ocg": {
+    "reference": 0.2199076821415557,
+    "original_four": 0.32642934462550316,
+    "reference_baseline": 0.22423133572527834,
+    "original_baseline": 0.3387337320480768,
+    "reference_effect": -0.004323653583722636,
+    "original_effect": -0.012304387422573615,
+    "reference_z": -0.04544223272531263,
+    "original_z": -0.09799885459186213,
+    "original_coverage_rank_among_size4": 4,
+    "reference_coverage_rank_among_size4": 1,
+    "n_size4_designs": 210
+  },
+  "pool_size_reference": 8,
+  "concentration": {
+    "eff_loss_dist": {
+      "gini_pool": 0.72659,
+      "gini_inscope": 0.79755,
+      "top3_share": 0.95699,
+      "effect_vs_randompool": -0.00288,
+      "p_randompool": 0.55769,
+      "p_randompool_holm": 1.0,
+      "p_dirichlet": 0.0014,
+      "p_bootstrap": 0.54589
+    },
+    "eff_loss_hop": {
+      "gini_pool": 0.76425,
+      "gini_inscope": 0.80052,
+      "top3_share": 1.0,
+      "effect_vs_randompool": 0.01712,
+      "p_randompool": 0.44231,
+      "p_randompool_holm": NaN,
+      "p_dirichlet": 0.0004,
+      "p_bootstrap": 0.43071
+    },
+    "topo": {
+      "gini_pool": 0.15,
+      "gini_inscope": 0.2744,
+      "top3_share": 0.5,
+      "effect_vs_randompool": -0.0628,
+      "p_randompool": 0.81584,
+      "p_randompool_holm": NaN,
+      "p_dirichlet": 0.9992,
+      "p_bootstrap": 0.80344
+    },
+    "betw_dist": {
+      "gini_pool": 0.65652,
+      "gini_inscope": 0.7672,
+      "top3_share": 0.94783,
+      "effect_vs_randompool": -0.03966,
+      "p_randompool": 0.66727,
+      "p_randompool_holm": 1.0,
+      "p_dirichlet": 0.0072,
+      "p_bootstrap": 0.63167
+    },
+    "betw_unw": {
+      "gini_pool": 0.69123,
+      "gini_inscope": 0.75451,
+      "top3_share": 0.97616,
+      "effect_vs_randompool": 0.01264,
+      "p_randompool": 0.4923,
+      "p_randompool_holm": NaN,
+      "p_dirichlet": 0.0026,
+      "p_bootstrap": 0.47171
+    },
+    "close_dist": {
+      "gini_pool": 0.14308,
+      "gini_inscope": 0.11618,
+      "top3_share": 0.47031,
+      "effect_vs_randompool": 0.03124,
+      "p_randompool": 0.15337,
+      "p_randompool_holm": NaN,
+      "p_dirichlet": 0.9996,
+      "p_bootstrap": 0.14857
+    },
+    "eig_unw": {
+      "gini_pool": 0.38797,
+      "gini_inscope": 0.457,
+      "top3_share": 0.63242,
+      "effect_vs_randompool": -0.04416,
+      "p_randompool": 0.68626,
+      "p_randompool_holm": NaN,
+      "p_dirichlet": 0.69306,
+      "p_bootstrap": 0.64287
+    },
+    "deg": {
+      "gini_pool": 0.25,
+      "gini_inscope": 0.45007,
+      "top3_share": 0.57143,
+      "effect_vs_randompool": -0.13059,
+      "p_randompool": 0.92482,
+      "p_randompool_holm": NaN,
+      "p_dirichlet": 0.97401,
+      "p_bootstrap": 0.88922
+    },
+    "service_km": {
+      "gini_pool": 0.44842,
+      "gini_inscope": 0.62308,
+      "top3_share": 0.73567,
+      "effect_vs_randompool": -0.07163,
+      "p_randompool": 0.73205,
+      "p_randompool_holm": 1.0,
+      "p_dirichlet": 0.46491,
+      "p_bootstrap": 0.68726
+    },
+    "overload_a05": {
+      "gini_pool": 0.15,
+      "gini_inscope": 0.69329,
+      "top3_share": 0.5,
+      "effect_vs_randompool": -0.32024,
+      "p_randompool": 0.94961,
+      "p_randompool_holm": NaN,
+      "p_dirichlet": 0.9992,
+      "p_bootstrap": 0.93981
+    }
+  },
+  "dibi": {
+    "spearman_DIBI_vs_naive": 0.958623312100878,
+    "jaccard_top10_DIBI_vs_naive": 0.8181818181818182,
+    "jaccard_top10_DIBI_vs_reference_only": 0.058823529411764705,
+    "n_invariant_blind_spots": 0,
+    "invariant_blind_spots": [],
+    "top5_DIBI": [
+      "JecheonYard",
+      "Donghae",
+      "Dodam",
+      "BusanNewPort",
+      "Dongsan"
+    ],
+    "sensitivity_median_top5_jaccard": 0.25,
+    "top5_frequency_over_specs": {
+      "JecheonYard": 0.667,
+      "Donghae": 0.667,
+      "BusanNewPort": 0.611,
+      "Goedong": 0.5,
+      "Obong": 0.361,
+      "Dongsan": 0.306,
+      "Dodam": 0.25,
+      "Uiwang": 0.236
+    }
+  },
+  "pareto": {
+    "best_at_m4": "Gyeongbu + Jeolla + Jungang + Chungbuk",
+    "best_cov_m4": 0.7800923178584442,
+    "reference_gap_to_frontier": 0.0,
+    "original_gap_to_frontier": 0.10652166248394734
+  },
+  "marginal_corridor": [
+    {
+      "line": "Jungang",
+      "action": "remove",
+      "delta_coverage": -0.2302,
+      "delta_km_share": -0.2239
+    },
+    {
+      "line": "Gyeongbu",
+      "action": "remove",
+      "delta_coverage": -0.1976,
+      "delta_km_share": -0.3382
+    },
+    {
+      "line": "Chungbuk",
+      "action": "remove",
+      "delta_coverage": -0.1863,
+      "delta_km_share": -0.198
+    }
+  ],
+  "corridor_vs_station": [
+    {
+      "added_line": "Taebaek",
+      "newly_covered_stations": 1,
+      "corridor_gain": 0.0801,
+      "station_level_gain_same_count": 0.0207,
+      "ratio_station_over_corridor": 0.2588
+    },
+    {
+      "added_line": "Yeongdong",
+      "newly_covered_stations": 1,
+      "corridor_gain": 0.0595,
+      "station_level_gain_same_count": 0.0207,
+      "ratio_station_over_corridor": 0.3481
+    },
+    {
+      "added_line": "Gyeongjeon",
+      "newly_covered_stations": 2,
+      "corridor_gain": 0.0537,
+      "station_level_gain_same_count": 0.0329,
+      "ratio_station_over_corridor": 0.6129
+    }
+  ],
+  "stageC": {
+    "pool_n": 8,
+    "K": 5,
+    "lambda": 0.3,
+    "greedy_set": [
+      "Hwangdeung",
+      "Suncheon",
+      "Gwangyang",
+      "Seokpo",
+      "Gunsan"
+    ],
+    "exact_set": [
+      "Gwangyang",
+      "Suncheon",
+      "Gunsan",
+      "Seokpo",
+      "Hwangdeung"
+    ],
+    "greedy_coverage": 0.80708,
+    "exact_coverage": 0.80708,
+    "greedy_over_exact": 1.0,
+    "guarantee_(1-1/e)": 0.6321205588285577,
+    "marginal_gains_pct_of_total": [
+      22.57,
+      17.99,
+      15.12,
+      12.72,
+      12.31
+    ],
+    "denominator": "sum of station utilities in the out-of-scope pool",
+    "submodularity_violations_in_3000_random_checks": 0,
+    "monotonicity_violations": 0,
+    "stability_main_alpha1": {
+      "exact_set_freq": 0.686,
+      "n_draws": 1000,
+      "top_station_freq": {
+        "Gunsan": 1.0,
+        "Suncheon": 1.0,
+        "Hwangdeung": 1.0,
+        "Seokpo": 0.844,
+        "Gwangyang": 0.842,
+        "Seokhang": 0.159,
+        "Sillyewon": 0.155
+      }
+    },
+    "cost_weighted_set": [
+      "Hwangdeung",
+      "Gunsan",
+      "Seokpo",
+      "Sillyewon",
+      "Gwangyang",
+      "Seokhang"
+    ],
+    "cost_proxy": "number of station tracks (n_tracks); budget = K x median cost"
+  },
+  "h3": [
+    {
+      "feature_set": "Full (closeness, eigenvector, service, betweenness)",
+      "overlap": 4,
+      "K": 5,
+      "pool": 8,
+      "p_uniform_exact": 0.28571,
+      "spearman_B_vs_composite": 0.91322,
+      "p_information_matched": 0.94488,
+      "p_information_matched_mcse": 0.00102,
+      "expected_overlap_uniform": 3.125
+    },
+    {
+      "feature_set": "Service-augmented (closeness, eigenvector, service)",
+      "overlap": 4,
+      "K": 5,
+      "pool": 8,
+      "p_uniform_exact": 0.28571,
+      "spearman_B_vs_composite": 0.68492,
+      "p_information_matched": 0.69927,
+      "p_information_matched_mcse": 0.00205,
+      "expected_overlap_uniform": 3.125
+    },
+    {
+      "feature_set": "Distinct only (closeness, eigenvector)",
+      "overlap": 3,
+      "K": 5,
+      "pool": 8,
+      "p_uniform_exact": 0.82143,
+      "spearman_B_vs_composite": 0.17757,
+      "p_information_matched": 0.87866,
+      "p_information_matched_mcse": 0.00146,
+      "expected_overlap_uniform": 3.125
+    }
+  ],
+  "moran": {
+    "n": 8,
+    "expected_I": -0.14285714285714285,
+    "I_range_knn": [
+      -0.21227209382506174,
+      0.0
+    ],
+    "p_two_range_knn": [
+      0.634,
+      1.0
+    ],
+    "min_p_positive_any_weights_raw": 0.3186,
+    "k_values_reported": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "lisa": {
+    "n_significant_raw": 1,
+    "n_significant_BH": 1,
+    "max_Gi_star_z": 0.9792644316129414
+  },
+  "top5_spatial": {
+    "mean_pairwise_km": 113.17360155147946,
+    "random_mean_km": 173.18992228759157,
+    "p_lower_tail": 0.036192761447710456
+  },
+  "spatial_power": [
+    {
+      "true_rho": 0.0,
+      "test_k": 5,
+      "detection_rate": 0.067
+    },
+    {
+      "true_rho": 0.0,
+      "test_k": 8,
+      "detection_rate": 0.0
+    },
+    {
+      "true_rho": 0.3,
+      "test_k": 5,
+      "detection_rate": 0.057
+    },
+    {
+      "true_rho": 0.3,
+      "test_k": 8,
+      "detection_rate": 0.0
+    },
+    {
+      "true_rho": 0.5,
+      "test_k": 5,
+      "detection_rate": 0.1
+    },
+    {
+      "true_rho": 0.5,
+      "test_k": 8,
+      "detection_rate": 0.0
+    },
+    {
+      "true_rho": 0.7,
+      "test_k": 5,
+      "detection_rate": 0.09
+    },
+    {
+      "true_rho": 0.7,
+      "test_k": 8,
+      "detection_rate": 0.0
+    },
+    {
+      "true_rho": 0.9,
+      "test_k": 5,
+      "detection_rate": 0.097
+    },
+    {
+      "true_rho": 0.9,
+      "test_k": 8,
+      "detection_rate": 0.0
+    }
+  ],
+  "rewiring": [
+    {
+      "variant": "degree-preserving",
+      "statistic": "gini_eff",
+      "observed": 0.7642,
+      "ensemble_mean": NaN,
+      "ensemble_sd": NaN,
+      "z": NaN,
+      "percentile_of_observed": 0.279,
+      "p_upper": 0.6983,
+      "p_upper_mcse": 0.0145,
+      "mean_swaps": 430.0,
+      "n_rewired": 1000,
+      "mean_top5_overlap": 4.752,
+      "expected_overlap_random": 3.125
+    },
+    {
+      "variant": "degree-preserving",
+      "statistic": "gini_topo",
+      "observed": 0.15,
+      "ensemble_mean": 0.0968,
+      "ensemble_sd": 0.0771,
+      "z": 0.6893,
+      "percentile_of_observed": 0.667,
+      "p_upper": 0.3337,
+      "p_upper_mcse": 0.0149,
+      "mean_swaps": 430.0,
+      "n_rewired": 1000,
+      "mean_top5_overlap": 4.752,
+      "expected_overlap_random": 3.125
+    },
+    {
+      "variant": "degree-preserving",
+      "statistic": "top3_eff",
+      "observed": 1.0,
+      "ensemble_mean": NaN,
+      "ensemble_sd": NaN,
+      "z": NaN,
+      "percentile_of_observed": 0.107,
+      "p_upper": 0.8701,
+      "p_upper_mcse": 0.0106,
+      "mean_swaps": 430.0,
+      "n_rewired": 1000,
+      "mean_top5_overlap": 4.752,
+      "expected_overlap_random": 3.125
+    },
+    {
+      "variant": "degree-preserving + length-constrained (25%)",
+      "statistic": "gini_eff",
+      "observed": 0.7642,
+      "ensemble_mean": NaN,
+      "ensemble_sd": NaN,
+      "z": NaN,
+      "percentile_of_observed": 0.308,
+      "p_upper": 0.6843,
+      "p_upper_mcse": 0.0147,
+      "mean_swaps": 430.0,
+      "n_rewired": 1000,
+      "mean_top5_overlap": 4.801,
+      "expected_overlap_random": 3.125
+    },
+    {
+      "variant": "degree-preserving + length-constrained (25%)",
+      "statistic": "gini_topo",
+      "observed": 0.15,
+      "ensemble_mean": 0.1021,
+      "ensemble_sd": 0.084,
+      "z": 0.5698,
+      "percentile_of_observed": 0.659,
+      "p_upper": 0.3417,
+      "p_upper_mcse": 0.015,
+      "mean_swaps": 430.0,
+      "n_rewired": 1000,
+      "mean_top5_overlap": 4.801,
+      "expected_overlap_random": 3.125
+    },
+    {
+      "variant": "degree-preserving + length-constrained (25%)",
+      "statistic": "top3_eff",
+      "observed": 1.0,
+      "ensemble_mean": NaN,
+      "ensemble_sd": NaN,
+      "z": NaN,
+      "percentile_of_observed": 0.165,
+      "p_upper": 0.8272,
+      "p_upper_mcse": 0.012,
+      "mean_swaps": 430.0,
+      "n_rewired": 1000,
+      "mean_top5_overlap": 4.801,
+      "expected_overlap_random": 3.125
+    }
+  ],
+  "exogenous": [
+    {
+      "structural_or_service": "betw_dist",
+      "exogenous": "via_count_special_terms",
+      "n_stations_with_data": 28,
+      "spearman": -0.233,
+      "ci_lo": -0.555,
+      "ci_hi": 0.145
+    },
+    {
+      "structural_or_service": "betw_dist",
+      "exogenous": "dep_events",
+      "n_stations_with_data": 33,
+      "spearman": 0.223,
+      "ci_lo": -0.132,
+      "ci_hi": 0.558
+    },
+    {
+      "structural_or_service": "betw_dist",
+      "exogenous": "arr_events",
+      "n_stations_with_data": 41,
+      "spearman": 0.15,
+      "ci_lo": -0.139,
+      "ci_hi": 0.409
+    },
+    {
+      "structural_or_service": "betw_dist",
+      "exogenous": "loaded_wagons",
+      "n_stations_with_data": 33,
+      "spearman": 0.207,
+      "ci_lo": -0.158,
+      "ci_hi": 0.528
+    },
+    {
+      "structural_or_service": "betw_dist",
+      "exogenous": "req_wagons_dep",
+      "n_stations_with_data": 33,
+      "spearman": 0.175,
+      "ci_lo": -0.188,
+      "ci_hi": 0.516
+    },
+    {
+      "structural_or_service": "betw_dist",
+      "exogenous": "completion_ratio",
+      "n_stations_with_data": 33,
+      "spearman": -0.151,
+      "ci_lo": -0.475,
+      "ci_hi": 0.199
+    },
+    {
+      "structural_or_service": "betw_dist",
+      "exogenous": "wagon_flow",
+      "n_stations_with_data": 41,
+      "spearman": 0.309,
+      "ci_lo": 0.026,
+      "ci_hi": 0.561
+    },
+    {
+      "structural_or_service": "eff_loss_dist",
+      "exogenous": "via_count_special_terms",
+      "n_stations_with_data": 28,
+      "spearman": -0.241,
+      "ci_lo": -0.583,
+      "ci_hi": 0.145
+    },
+    {
+      "structural_or_service": "eff_loss_dist",
+      "exogenous": "dep_events",
+      "n_stations_with_data": 33,
+      "spearman": 0.255,
+      "ci_lo": -0.098,
+      "ci_hi": 0.564
+    },
+    {
+      "structural_or_service": "eff_loss_dist",
+      "exogenous": "arr_events",
+      "n_stations_with_data": 41,
+      "spearman": 0.138,
+      "ci_lo": -0.142,
+      "ci_hi": 0.412
+    },
+    {
+      "structural_or_service": "eff_loss_dist",
+      "exogenous": "loaded_wagons",
+      "n_stations_with_data": 33,
+      "spearman": 0.253,
+      "ci_lo": -0.084,
+      "ci_hi": 0.54
+    },
+    {
+      "structural_or_service": "eff_loss_dist",
+      "exogenous": "req_wagons_dep",
+      "n_stations_with_data": 33,
+      "spearman": 0.248,
+      "ci_lo": -0.09,
+      "ci_hi": 0.547
+    }
+  ],
+  "stations_without_reservation_data": [
+    "Ganchi",
+    "Gwangwoondae",
+    "Obong",
+    "Gunsan",
+    "Mureung",
+    "Munsu",
+    "Seokhang",
+    "Ssangryong",
+    "Okgye",
+    "Taehwagang",
+    "Incheon",
+    "Gyeongju"
+  ],
+  "robust_candidates_in_>=2_layers": [
+    "Gwangyang",
+    "Sillyewon",
+    "Suncheon",
+    "Seokpo",
+    "Hwangdeung",
+    "Mokpo",
+    "Gunsan",
+    "Seokhang"
+  ],
+  "temporal_stability": [
+    {
+      "quarter_1": "2025Q1",
+      "quarter_2": "2025Q2",
+      "n_stations": 38,
+      "spearman": 0.97
+    },
+    {
+      "quarter_1": "2025Q2",
+      "quarter_2": "2025Q3",
+      "n_stations": 37,
+      "spearman": 0.98
+    }
+  ],
+  "spec_curve": {
+    "n_specs": 88,
+    "share_p_below_05": 0.03409090909090909,
+    "share_effect_positive": 0.5795454545454546,
+    "median_effect": 0.010122222449124266,
+    "top5_frequency": {
+      "Goedong": 0.727,
+      "Hwangdeung": 0.568,
+      "Obong": 0.511,
+      "Donghae": 0.364,
+      "Gwangyang": 0.284,
+      "ShingwangyangPort": 0.261,
+      "BusanNewPort": 0.227,
+      "Dongsan": 0.227
+    }
+  },
+  "verdicts": {
+    "H1' (out-of-scope value is more concentrated than a random same-size station set; Holm-adjusted)": false,
+    "H2' (observed concentration is unusual vs degree-preserving rewired ensembles)": false,
+    "H3' (Stage B/C agreement exceeds an information-matched null)": false,
+    "H4' (DIBI adds information beyond naive ranking)": false,
+    "H5' (global spatial clustering detected)": false
+  },
+  "power_at_rho_0.5_k5": 0.1
+}
