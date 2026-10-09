@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 warnings.filterwarnings("ignore")
 
 # ================================================================ CONFIG
-ROOT = Path(os.environ.get("RAIL_ROOT", "/home/yjlee/Research/AI_Rail_OM"))
+ROOT = Path(os.environ.get("RAIL_ROOT", "."))
 B, R1 = ROOT / "Data_bundle", ROOT / "Reanalysis_v1"
 OUT = R1 / "supp"; TAB, FIG = OUT / "tables", OUT / "figures"
 for d in (OUT, TAB, FIG): d.mkdir(parents=True, exist_ok=True)

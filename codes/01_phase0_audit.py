@@ -262,7 +262,7 @@
 # ```python
 # import pandas as pd
 # from pathlib import Path
-# B = Path("/home/yjlee/Research/AI_Rail_OM/Data_bundle")
+# B = Path("./Data_bundle")
 # tt = pd.read_csv(B/"03a_timetable_trains.csv", encoding="utf-8-sig")
 # tt["train_km_week"] = tt.n_days * tt.distance_km
 # g = (tt.groupby("main_line_kor")

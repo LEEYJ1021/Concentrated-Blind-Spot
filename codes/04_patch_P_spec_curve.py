@@ -47,7 +47,7 @@ import matplotlib.patheffects as pe
 warnings.filterwarnings("ignore")
 
 # ================================================================= CONFIG
-ROOT = Path(os.environ.get("RAIL_ROOT", "/home/yjlee/Research/AI_Rail_OM"))
+ROOT = Path(os.environ.get("RAIL_ROOT", "."))
 B, R1 = ROOT / "Data_bundle", ROOT / "Reanalysis_v1"
 OUT = R1 / "manuscript_figures"; DATA = OUT / "figure_data"; GEO = B / "geo"
 for d in (OUT, DATA, GEO): d.mkdir(parents=True, exist_ok=True)

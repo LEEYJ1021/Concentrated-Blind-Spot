@@ -12,7 +12,7 @@ from scipy.stats import norm
 import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
 warnings.filterwarnings("ignore")
 
-ROOT = Path(os.environ.get("RAIL_ROOT", "/home/yjlee/Research/AI_Rail_OM")); R1 = ROOT / "Reanalysis_v1"
+ROOT = Path(os.environ.get("RAIL_ROOT", ".")); R1 = ROOT / "Reanalysis_v1"
 OUT = R1 / "supp_e"; TAB, FIG = OUT / "tables", OUT / "figures"
 for d in (OUT, TAB, FIG): d.mkdir(parents=True, exist_ok=True)
 QUICK = os.environ.get("QUICK", "0") == "1"; SEED = 20261013; rng = np.random.default_rng(SEED)

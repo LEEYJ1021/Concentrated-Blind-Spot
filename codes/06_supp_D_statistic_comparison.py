@@ -11,7 +11,7 @@ from scipy.stats import rankdata
 import matplotlib; matplotlib.use("Agg"); import matplotlib.pyplot as plt
 warnings.filterwarnings("ignore")
 
-ROOT = Path(os.environ.get("RAIL_ROOT", "/home/yjlee/Research/AI_Rail_OM"))
+ROOT = Path(os.environ.get("RAIL_ROOT", "."))
 B, R1 = ROOT / "Data_bundle", ROOT / "Reanalysis_v1"; OUT = R1 / "supp_d"; TAB, FIG = OUT / "tables", OUT / "figures"
 for d in (OUT, TAB, FIG): d.mkdir(parents=True, exist_ok=True)
 QUICK = os.environ.get("QUICK", "0") == "1"; SEED = 20261012; rng = np.random.default_rng(SEED)

@@ -73,7 +73,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patheffects as pe
 
 np.random.seed(42)
-OUT_DIR = "/home/yjlee/Research/AI_Rail_OM/outputs_supplement"
+OUT_DIR = "./outputs_supplement"
 os.makedirs(OUT_DIR, exist_ok=True)
 
 BASE1 = "https://raw.githubusercontent.com/LEEYJ1021/rail-freight-decarbonization/main"
